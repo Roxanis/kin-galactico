@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calculadora de Kin Galáctico</title>
+    <meta
+      name="description"
+      content="Calcula tu kin galáctico a partir de tu fecha de nacimiento y conéctalo con tu experiencia en tienda."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <p class="eyebrow">Landing MVP para Tiendanube</p>
+        <h1>Calcula tu kin galáctico</h1>
+        <p class="intro">
+          Esta primera versión toma tu fecha de nacimiento, calcula tu kin dentro de la matriz de
+          260 kines y deja la base lista para conectar tu resultado con productos, rituales o
+          colecciones especiales.
+        </p>
+      </section>
+
+      <section class="grid">
+        <article class="card form-card">
+          <h2>Tu portal de entrada</h2>
+          <p class="supporting">
+            Los 20 sellos solares y los 13 tonos galácticos se permutan para formar los 260 kines.
+          </p>
+
+          <form id="kin-form" class="form">
+            <label for="name">Nombre</label>
+            <input id="name" name="name" type="text" placeholder="Tu nombre" />
+
+            <label for="birthdate">Fecha de nacimiento</label>
+            <input id="birthdate" name="birthdate" type="date" required />
+
+            <button type="submit">Calcular mi kin</button>
+          </form>
+
+          <p class="note">
+            Referencia usada en este MVP: 26/07/2025 = Kin 124 según material publicado por
+            13lunas.net.
+          </p>
+        </article>
+
+        <article class="card result-card" id="result-card" hidden>
+          <p class="result-kicker">Resultado</p>
+          <h2 id="result-title">Kin</h2>
+          <p id="result-summary" class="result-summary"></p>
+
+          <dl class="result-grid">
+            <div>
+              <dt>Número</dt>
+              <dd id="result-kin"></dd>
+            </div>
+            <div>
+              <dt>Tono</dt>
+              <dd id="result-tone"></dd>
+            </div>
+            <div>
+              <dt>Sello</dt>
+              <dd id="result-seal"></dd>
+            </div>
+            <div>
+              <dt>Color</dt>
+              <dd id="result-color"></dd>
+            </div>
+          </dl>
+
+          <p id="result-copy" class="result-copy"></p>
+          <p id="result-seal-meta" class="result-detail"></p>
+          <p id="result-tone-meta" class="result-detail"></p>
+          <p id="result-color-meta" class="result-detail"></p>
+          <p id="result-guidance" class="result-guidance"></p>
+
+          <div class="result-actions">
+            <a id="session-link" class="shop-link" href="#" target="_blank" rel="noreferrer">
+              Reservar interpretación personal
+            </a>
+            <a id="session-info-link" class="secondary-link" href="#" target="_blank" rel="noreferrer">
+              Ver info del servicio
+            </a>
+            <a id="shop-link" class="secondary-link" href="#" target="_blank" rel="noreferrer">
+              Ver productos sugeridos
+            </a>
+          </div>
+        </article>
+      </section>
+
+      <section class="card steps">
+        <h2>Cómo se conectaría con tu tienda</h2>
+        <ol>
+          <li>Publicas esta landing en un hosting simple.</li>
+          <li>En Tiendanube agregas un botón o enlace desde el menú.</li>
+          <li>Según el sello o kin, envías a una colección o producto especial.</li>
+        </ol>
+        <p class="note">
+          El archivo <code>config.js</code> ya quedó apuntando a <code>rox-experiences.com</code> y
+          puedes cambiar cada sello para enviarlo a una categoría, producto o colección concreta.
+        </p>
+        <p class="note">
+          También quedó conectado con tu página de Sincronario y con un enlace directo a WhatsApp
+          para reservar la sesión de interpretación personal.
+        </p>
+      </section>
+    </main>
+
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
