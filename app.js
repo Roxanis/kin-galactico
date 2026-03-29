@@ -44,6 +44,35 @@ const COLOR_MEANINGS = {
   Amarillo: "madura y comparte fruto",
 };
 
+const TONE_INFINITIVES = {
+  Unifica: "unificar",
+  Atrae: "atraer",
+  Polariza: "polarizar",
+  Estabiliza: "estabilizar",
+  Activa: "activar",
+  Vincula: "vincular",
+  Define: "definir",
+  Mide: "medir",
+  Faculta: "facultar",
+  Comanda: "comandar",
+  Organiza: "organizar",
+  Equilibra: "equilibrar",
+  Canaliza: "canalizar",
+  Inspira: "inspirar",
+  Armoniza: "armonizar",
+  Modela: "modelar",
+  Pulsa: "pulsar",
+  Realiza: "realizar",
+  Perfecciona: "perfeccionar",
+  Produce: "producir",
+  Disuelve: "disolver",
+  Libera: "liberar",
+  Dedica: "dedicar",
+  Universaliza: "universalizar",
+  Perdura: "perdurar",
+  Trasciende: "trascender",
+};
+
 const MONTH_OFFSETS = [0, 31, 59, 90, 120, 151, 181, 212, 243, 13, 44, 74];
 const YEAR_TABLE_BASE_YEAR = 1994;
 const YEAR_TABLE_BASE_VALUE = 42;
@@ -126,7 +155,7 @@ function updateShopLink(seal) {
 }
 
 function buildReading(seal, tone) {
-  return `Tu firma ${seal.nameEs} ${tone.name} ${seal.color} trae una energia que puede invitarte a ${seal.action.toLowerCase()} desde ${seal.essence.toLowerCase()} y a reconocer en tu camino la medicina de ${seal.power.toLowerCase()}. El tono ${tone.name.toLowerCase()} le da a esta frecuencia un pulso que ${tone.function.toLowerCase()}, ${tone.action.toLowerCase()} y abre la posibilidad de ${tone.essence.toLowerCase()}.`;
+  return `Tu firma ${seal.nameEs} ${tone.name} ${seal.color} trae una energia que puede invitarte a ${seal.action.toLowerCase()} desde ${seal.essence.toLowerCase()} y a reconocer en tu camino la medicina de ${seal.power.toLowerCase()}. El tono ${tone.name.toLowerCase()} le da a esta frecuencia un pulso que acompana este aprendizaje y abre la posibilidad de ${tone.essence.toLowerCase()}.`;
 }
 
 function buildGuidance(seal, tone) {
@@ -154,8 +183,8 @@ function updateResult(name, dateString) {
   resultColor.textContent = seal.color;
   resultCopy.textContent = buildReading(seal, tone);
   resultSealMeta.textContent = `Tu sello trae el poder de ${seal.power.toLowerCase()}, la accion de ${seal.action.toLowerCase()} y la esencia de ${seal.essence.toLowerCase()}. ${seal.nameEs} ${seal.phrase} y puede hacer visible una cualidad profunda de tu energia natal.`;
-  resultToneMeta.textContent = `Tu tono cumple la funcion de ${tone.function.toLowerCase()}, invita a ${tone.action.toLowerCase()} y despierta ${tone.essence.toLowerCase()}. Este tono ${tone.phrase} y muestra la manera en que tu energia busca expresarse.`;
-  resultColorMeta.textContent = `En la secuencia de colores, el ${seal.color.toLowerCase()} ${COLOR_MEANINGS[seal.color]}. Esta capa habla del movimiento que tu energia puede estar atravesando en este momento.`;
+  resultToneMeta.textContent = `Tu tono trae la funcion de ${TONE_INFINITIVES[tone.function] || tone.function.toLowerCase()}, la accion de ${TONE_INFINITIVES[tone.action] || tone.action.toLowerCase()} y la esencia de ${tone.essence.toLowerCase()}. ${tone.phrase} y muestra la manera en que tu energia busca expresarse.`;
+  resultColorMeta.textContent = `En la secuencia de colores, el ${seal.color.toLowerCase()} marca una energia que ${COLOR_MEANINGS[seal.color]}. Esta capa puede mostrar el movimiento que tu proceso esta atravesando en este momento.`;
   resultGuidance.textContent = buildGuidance(seal, tone);
   updateShopLink(seal);
   updateSessionLinks(seal, tone, kinNumber);
