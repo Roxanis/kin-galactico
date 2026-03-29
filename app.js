@@ -119,16 +119,18 @@ function updateShopLink(seal) {
   const isConfigured = Boolean(SHOP_COLLECTIONS[seal.name]);
 
   shopLink.href = url;
-  shopLink.textContent = isConfigured ? `Explorar rituales para ${seal.nameEs}` : "Explorar productos rituales";
+  shopLink.textContent = isConfigured
+    ? `Seguir explorando la medicina de ${seal.nameEs}`
+    : "Explorar productos y rituales";
   shopLink.classList.toggle("is-placeholder", !isConfigured);
 }
 
 function buildReading(seal, tone) {
-  return `Tu firma ${seal.nameEs} ${tone.name} ${seal.color} entrelaza la fuerza de ${seal.power.toLowerCase()} con el gesto de ${seal.action.toLowerCase()} y la esencia de ${seal.essence.toLowerCase()}. El tono ${tone.name.toLowerCase()} le da un pulso que ${tone.function.toLowerCase()}, ${tone.action.toLowerCase()} y abre ${tone.essence.toLowerCase()}.`;
+  return `Tu firma ${seal.nameEs} ${tone.name} ${seal.color} trae una energia que puede invitarte a ${seal.action.toLowerCase()} desde ${seal.essence.toLowerCase()} y a reconocer en tu camino la medicina de ${seal.power.toLowerCase()}. El tono ${tone.name.toLowerCase()} le da a esta frecuencia un pulso que ${tone.function.toLowerCase()}, ${tone.action.toLowerCase()} y abre la posibilidad de ${tone.essence.toLowerCase()}.`;
 }
 
 function buildGuidance(seal, tone) {
-  return `Esta combinacion puede invitarte a ${seal.action.toLowerCase()} desde ${seal.essence.toLowerCase()} y a dejar que el tono ${tone.name.toLowerCase()} te ensene a ${tone.action.toLowerCase()} con ${tone.essence.toLowerCase()}. Tu kin no te encierra: te orienta. Es una puerta de autoconocimiento y una practica para habitar tus ciclos con mas presencia.`;
+  return `En la vida cotidiana, esta combinacion puede mostrarte como habitas tus vinculos, tus decisiones y tu ritmo interno. Tu kin no te encierra: te orienta. Puede ayudarte a escucharte con mas suavidad y a dar pasos mas alineados con lo que hoy esta queriendo abrirse en ti.`;
 }
 
 function updateSessionLinks(seal, tone, kinNumber) {
@@ -145,15 +147,15 @@ function updateResult(name, dateString) {
   const displayName = name.trim() || "Tu firma";
 
   resultTitle.textContent = `Kin ${kinNumber}: ${seal.nameEs} ${tone.name} ${seal.color}`;
-  resultSummary.textContent = `${displayName}, tu firma galactica une el sello ${seal.nameEs} con el tono ${tone.name} para mostrar una medicina singular dentro de la matriz de 260 kines.`;
+  resultSummary.textContent = `${displayName}, tu firma galactica une el sello ${seal.nameEs} con el tono ${tone.name} y abre una primera clave para comprender la energia que acompana tu camino.`;
   resultKin.textContent = `Kin ${kinNumber}`;
   resultTone.textContent = tone.name;
   resultSeal.textContent = seal.nameEs;
   resultColor.textContent = seal.color;
   resultCopy.textContent = buildReading(seal, tone);
-  resultSealMeta.textContent = `Tu sello trae el poder de ${seal.power.toLowerCase()}, la accion de ${seal.action.toLowerCase()} y la esencia de ${seal.essence.toLowerCase()}. ${seal.nameEs} ${seal.phrase}.`;
-  resultToneMeta.textContent = `Tu tono cumple la funcion de ${tone.function.toLowerCase()}, invita a ${tone.action.toLowerCase()} y despierta ${tone.essence.toLowerCase()}. ${tone.phrase}.`;
-  resultColorMeta.textContent = `En la secuencia de colores, el ${seal.color.toLowerCase()} ${COLOR_MEANINGS[seal.color]}.`;
+  resultSealMeta.textContent = `Tu sello trae el poder de ${seal.power.toLowerCase()}, la accion de ${seal.action.toLowerCase()} y la esencia de ${seal.essence.toLowerCase()}. ${seal.nameEs} ${seal.phrase} y puede hacer visible una cualidad profunda de tu energia natal.`;
+  resultToneMeta.textContent = `Tu tono cumple la funcion de ${tone.function.toLowerCase()}, invita a ${tone.action.toLowerCase()} y despierta ${tone.essence.toLowerCase()}. Este tono ${tone.phrase} y muestra la manera en que tu energia busca expresarse.`;
+  resultColorMeta.textContent = `En la secuencia de colores, el ${seal.color.toLowerCase()} ${COLOR_MEANINGS[seal.color]}. Esta capa habla del movimiento que tu energia puede estar atravesando en este momento.`;
   resultGuidance.textContent = buildGuidance(seal, tone);
   updateShopLink(seal);
   updateSessionLinks(seal, tone, kinNumber);
