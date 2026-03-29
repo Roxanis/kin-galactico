@@ -44,9 +44,10 @@ const COLOR_MEANINGS = {
   Amarillo: "madura y comparte fruto",
 };
 
-const KIN_ANCHOR_DATE = "2025-07-26";
-const KIN_ANCHOR_NUMBER = 124;
-const MS_PER_DAY = 24 * 60 * 60 * 1000;
+const MONTH_OFFSETS = [0, 31, 59, 90, 120, 151, 181, 212, 243, 13, 44, 74];
+const YEAR_TABLE_BASE_YEAR = 1994;
+const YEAR_TABLE_BASE_VALUE = 42;
+const YEAR_TABLE_STEP = 105;
 
 const APP_CONFIG = window.KIN_APP_CONFIG || {};
 const SHOP_BASE_URL = (APP_CONFIG.shopBaseUrl || "").replace(/\/$/, "");
@@ -76,18 +77,23 @@ const sessionInfoLink = document.querySelector("#session-info-link");
 
 function normalizeDate(dateString) {
   const [year, month, day] = dateString.split("-").map(Number);
-  return new Date(Date.UTC(year, month - 1, day));
+  return { year, month, day };
 }
 
 function positiveModulo(value, divisor) {
   return ((value % divisor) + divisor) % divisor;
 }
 
+function getYearValue(year) {
+  const distance = year - YEAR_TABLE_BASE_YEAR;
+  return positiveModulo(YEAR_TABLE_BASE_VALUE - 1 + distance * YEAR_TABLE_STEP, 260) + 1;
+}
+
 function calculateKin(dateString) {
-  const birthDate = normalizeDate(dateString);
-  const anchorDate = normalizeDate(KIN_ANCHOR_DATE);
-  const dayDifference = Math.round((birthDate - anchorDate) / MS_PER_DAY);
-  const kinNumber = positiveModulo(KIN_ANCHOR_NUMBER - 1 + dayDifference, 260) + 1;
+  const { year, month, day } = normalizeDate(dateString);
+  const yearValue = getYearValue(year);
+  const monthValue = MONTH_OFFSETS[month - 1];
+  const kinNumber = positiveModulo(yearValue + monthValue + day - 1, 260) + 1;
   const tone = GALACTIC_TONES[positiveModulo(kinNumber - 1, 13)];
   const seal = SOLAR_SEALS[positiveModulo(kinNumber - 1, 20)];
 
