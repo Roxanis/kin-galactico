@@ -128,6 +128,13 @@ const COLOR_ADJECTIVES = {
   Amarillo: { m: "Amarillo", f: "Amarilla" },
 };
 
+const COLOR_PALETTE = {
+  Rojo: { fill: "#c45d46", accent: "#f2d0b8", text: "#fff7ef" },
+  Blanco: { fill: "#d9d1c7", accent: "#8a7462", text: "#2f241d" },
+  Azul: { fill: "#587998", accent: "#d7e6ef", text: "#f7fbff" },
+  Amarillo: { fill: "#d4ab4e", accent: "#fff0b8", text: "#2f241d" },
+};
+
 const GUIDE_FAMILY_SHIFTS = [0, 3, 1, 4, 2];
 
 const MONTH_OFFSETS = [0, 31, 59, 90, 120, 151, 181, 212, 243, 13, 44, 74];
@@ -308,8 +315,39 @@ function resolveKinImage(kinNumber) {
   return "";
 }
 
+function buildKinSvg(kinNumber, seal, toneDisplay) {
+  const palette = COLOR_PALETTE[seal.color] || COLOR_PALETTE.Rojo;
+  const orbitCount = positiveModulo(kinNumber - 1, 13) + 1;
+  const dots = Array.from({ length: orbitCount }, (_, index) => {
+    const angle = (Math.PI * 2 * index) / orbitCount - Math.PI / 2;
+    const x = 100 + Math.cos(angle) * 64;
+    const y = 100 + Math.sin(angle) * 64;
+    return `<circle cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" r="4.4" fill="${palette.accent}" opacity="0.9" />`;
+  }).join("");
+
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Kin ${kinNumber}">
+      <defs>
+        <radialGradient id="glow" cx="30%" cy="30%">
+          <stop offset="0%" stop-color="#fffaf4" />
+          <stop offset="100%" stop-color="${palette.fill}" />
+        </radialGradient>
+      </defs>
+      <rect width="200" height="200" rx="100" fill="url(#glow)" />
+      <circle cx="100" cy="100" r="82" fill="none" stroke="${palette.accent}" stroke-width="1.2" opacity="0.7" />
+      <circle cx="100" cy="100" r="66" fill="none" stroke="${palette.accent}" stroke-width="0.8" opacity="0.5" />
+      ${dots}
+      <text x="100" y="92" text-anchor="middle" font-family="Georgia, serif" font-size="38" fill="${palette.text}">${kinNumber}</text>
+      <text x="100" y="118" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" letter-spacing="2" fill="${palette.text}">${seal.nameEs.toUpperCase()}</text>
+      <text x="100" y="138" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" letter-spacing="1.6" fill="${palette.text}">${toneDisplay.toUpperCase()}</text>
+    </svg>
+  `.trim();
+
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+}
+
 function updateKinImage(kinNumber, seal, toneDisplay) {
-  const imageUrl = resolveKinImage(kinNumber);
+  const imageUrl = resolveKinImage(kinNumber) || buildKinSvg(kinNumber, seal, toneDisplay);
 
   if (imageUrl) {
     kinImage.src = imageUrl;
