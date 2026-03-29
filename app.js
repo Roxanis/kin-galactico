@@ -143,11 +143,14 @@ const SESSION_PAGE_URL =
   APP_CONFIG.sessionPageUrl || "https://www.rox-experiences.com/astrologia-maya-tzolkin/";
 const SESSION_BOOKING_URL =
   APP_CONFIG.sessionBookingUrl || "https://wa.me/541169047724";
+const KIN_IMAGE_BASE_PATH = APP_CONFIG.kinImageBasePath || "";
+const KIN_IMAGES = APP_CONFIG.kinImages || {};
 
 const form = document.querySelector("#kin-form");
 const resultCard = document.querySelector("#result-card");
 const resultTitle = document.querySelector("#result-title");
 const resultSummary = document.querySelector("#result-summary");
+const kinImage = document.querySelector("#kin-image");
 const emblemKin = document.querySelector("#emblem-kin");
 const emblemSeal = document.querySelector("#emblem-seal");
 const resultKin = document.querySelector("#result-kin");
@@ -213,7 +216,7 @@ function getKinData(kinNumber) {
 }
 
 function getWaveData(kinNumber, tone) {
-  const waveStartKin = positiveModulo(kinNumber - toneIndexFromName(tone.name), 260) + 1;
+  const waveStartKin = positiveModulo(kinNumber - 1 - toneIndexFromName(tone.name), 260) + 1;
   const waveSeal = getKinData(waveStartKin).seal;
 
   return {
@@ -235,18 +238,36 @@ function getGuideSeal(seal, tone) {
 }
 
 function buildOracleData(kinNumber, seal, tone) {
+  const sealNumber = SOLAR_SEALS.indexOf(seal) + 1;
+  const toneNumber = toneIndexFromName(tone.name) + 1;
   const guideSeal = getGuideSeal(seal, tone);
-  const analogSeal = getSealByNumber(19 - (SOLAR_SEALS.indexOf(seal) + 1));
-  const antipodeSeal = getSealByNumber((SOLAR_SEALS.indexOf(seal) + 1) + 10);
+  const analogSeal = getSealByNumber(19 - sealNumber);
+  const antipodeSeal = getSealByNumber(sealNumber + 10);
   const occultKin = 261 - kinNumber;
   const occultData = getKinData(occultKin);
+  const guideKin = getKinFromSealAndTone(SOLAR_SEALS.indexOf(guideSeal) + 1, toneNumber);
+  const analogKin = getKinFromSealAndTone(SOLAR_SEALS.indexOf(analogSeal) + 1, toneNumber);
+  const antipodeKin = getKinFromSealAndTone(SOLAR_SEALS.indexOf(antipodeSeal) + 1, toneNumber);
 
   return {
-    guide: guideSeal,
-    analog: analogSeal,
-    antipode: antipodeSeal,
+    guide: getKinData(guideKin),
+    analog: getKinData(analogKin),
+    antipode: getKinData(antipodeKin),
     occult: occultData,
   };
+}
+
+function getKinFromSealAndTone(sealNumber, toneNumber) {
+  for (let kin = 1; kin <= 260; kin += 1) {
+    const kinSeal = positiveModulo(kin - 1, 20) + 1;
+    const kinTone = positiveModulo(kin - 1, 13) + 1;
+
+    if (kinSeal === sealNumber && kinTone === toneNumber) {
+      return kin;
+    }
+  }
+
+  return 1;
 }
 
 function calculateKin(dateString) {
@@ -272,6 +293,34 @@ function resolveShopUrl(seal) {
   }
 
   return DEFAULT_SHOP_URL;
+}
+
+function resolveKinImage(kinNumber) {
+  if (KIN_IMAGES[kinNumber]) {
+    return KIN_IMAGES[kinNumber];
+  }
+
+  if (KIN_IMAGE_BASE_PATH) {
+    const padded = String(kinNumber).padStart(3, "0");
+    return `${KIN_IMAGE_BASE_PATH.replace(/\/$/, "")}/kin-${padded}.png`;
+  }
+
+  return "";
+}
+
+function updateKinImage(kinNumber, seal, toneDisplay) {
+  const imageUrl = resolveKinImage(kinNumber);
+
+  if (imageUrl) {
+    kinImage.src = imageUrl;
+    kinImage.alt = `Imagen del Kin ${kinNumber}: ${seal.nameEs} ${toneDisplay}`;
+    kinImage.hidden = false;
+    return;
+  }
+
+  kinImage.removeAttribute("src");
+  kinImage.alt = "";
+  kinImage.hidden = true;
 }
 
 function updateShopLink(seal) {
@@ -300,7 +349,7 @@ function buildWaveCopy(waveSeal) {
 }
 
 function buildOracleCopy(oracle) {
-  return `Tu oraculo muestra una trama de apoyo y aprendizaje: ${oracle.guide.nameEs} aparece como energia guia, ${oracle.analog.nameEs} como resonancia afectiva, ${oracle.antipode.nameEs} como desafio evolutivo y ${oracle.occult.seal.nameEs} como medicina escondida que madura en silencio.`;
+  return `Tu oraculo muestra una trama de apoyo y aprendizaje: ${oracle.guide.seal.nameEs} aparece como energia guia, ${oracle.analog.seal.nameEs} como resonancia afectiva, ${oracle.antipode.seal.nameEs} como desafio evolutivo y ${oracle.occult.seal.nameEs} como medicina escondida que madura en silencio.`;
 }
 
 function updateSessionLinks(seal, tone, kinNumber) {
@@ -322,6 +371,7 @@ function updateResult(name, dateString) {
 
   resultTitle.textContent = `Kin ${kinNumber}: ${seal.nameEs} ${toneDisplay} ${colorDisplay}`;
   resultSummary.textContent = `${displayName}, tu firma galactica une el sello ${seal.nameEs} con el tono ${tone.name} y abre una primera clave para comprender la energia que acompana tu camino.`;
+  updateKinImage(kinNumber, seal, toneDisplay);
   emblemKin.textContent = kinNumber;
   emblemSeal.textContent = `${seal.nameEs} ${toneDisplay}`;
   resultKin.textContent = `Kin ${kinNumber}`;
@@ -335,9 +385,9 @@ function updateResult(name, dateString) {
   resultGuidance.textContent = buildGuidance(seal, tone);
   waveTitle.textContent = `Onda encantada de ${wave.waveSeal.nameEs}`;
   waveCopy.textContent = buildWaveCopy(wave.waveSeal);
-  oracleGuide.textContent = oracle.guide.nameEs;
-  oracleAnalog.textContent = oracle.analog.nameEs;
-  oracleAntipode.textContent = oracle.antipode.nameEs;
+  oracleGuide.textContent = `Kin ${oracle.guide.kinNumber}: ${oracle.guide.seal.nameEs}`;
+  oracleAnalog.textContent = `Kin ${oracle.analog.kinNumber}: ${oracle.analog.seal.nameEs}`;
+  oracleAntipode.textContent = `Kin ${oracle.antipode.kinNumber}: ${oracle.antipode.seal.nameEs}`;
   oracleOccult.textContent = `Kin ${oracle.occult.kinNumber}: ${oracle.occult.seal.nameEs}`;
   oracleCopy.textContent = buildOracleCopy(oracle);
   updateShopLink(seal);

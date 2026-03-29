@@ -3,6 +3,7 @@ window.KIN_APP_CONFIG = {
   defaultShopUrl: "https://www.rox-experiences.com/productos/",
   sessionPageUrl: "https://www.rox-experiences.com/astrologia-maya-tzolkin/",
   sessionBookingUrl: "https://wa.me/541169047724",
+  kinImageBasePath: "",
   collections: {
     Dragon: "/productos/",
     Wind: "/productos/",
