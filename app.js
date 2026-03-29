@@ -119,16 +119,16 @@ function updateShopLink(seal) {
   const isConfigured = Boolean(SHOP_COLLECTIONS[seal.name]);
 
   shopLink.href = url;
-  shopLink.textContent = isConfigured ? `Ver sugerencia para ${seal.nameEs}` : "Ver todos los productos";
+  shopLink.textContent = isConfigured ? `Explorar rituales para ${seal.nameEs}` : "Explorar productos rituales";
   shopLink.classList.toggle("is-placeholder", !isConfigured);
 }
 
 function buildReading(seal, tone) {
-  return `${seal.nameEs} ${tone.name} ${seal.color} combina ${seal.power.toLowerCase()}, ${seal.action.toLowerCase()} y ${seal.essence.toLowerCase()} con un tono que ${tone.function.toLowerCase()}, ${tone.action.toLowerCase()} y trae ${tone.essence.toLowerCase()}.`;
+  return `Tu firma ${seal.nameEs} ${tone.name} ${seal.color} entrelaza la fuerza de ${seal.power.toLowerCase()} con el gesto de ${seal.action.toLowerCase()} y la esencia de ${seal.essence.toLowerCase()}. El tono ${tone.name.toLowerCase()} le da un pulso que ${tone.function.toLowerCase()}, ${tone.action.toLowerCase()} y abre ${tone.essence.toLowerCase()}.`;
 }
 
 function buildGuidance(seal, tone) {
-  return `Tu aprendizaje con este kin puede pasar por ${seal.action.toLowerCase()} desde ${seal.essence.toLowerCase()} y permitir que el tono ${tone.name.toLowerCase()} te ayude a ${tone.action.toLowerCase()} con ${tone.essence.toLowerCase()}. Esta combinacion es unica dentro de los 260 kines y abre una puerta distinta de autoconocimiento.`;
+  return `Esta combinacion puede invitarte a ${seal.action.toLowerCase()} desde ${seal.essence.toLowerCase()} y a dejar que el tono ${tone.name.toLowerCase()} te ensene a ${tone.action.toLowerCase()} con ${tone.essence.toLowerCase()}. Tu kin no te encierra: te orienta. Es una puerta de autoconocimiento y una practica para habitar tus ciclos con mas presencia.`;
 }
 
 function updateSessionLinks(seal, tone, kinNumber) {
@@ -145,15 +145,15 @@ function updateResult(name, dateString) {
   const displayName = name.trim() || "Tu firma";
 
   resultTitle.textContent = `Kin ${kinNumber}: ${seal.nameEs} ${tone.name} ${seal.color}`;
-  resultSummary.textContent = `${displayName}, tu firma galactica une el sello ${seal.nameEs} con el tono ${tone.name}.`;
+  resultSummary.textContent = `${displayName}, tu firma galactica une el sello ${seal.nameEs} con el tono ${tone.name} para mostrar una medicina singular dentro de la matriz de 260 kines.`;
   resultKin.textContent = `Kin ${kinNumber}`;
   resultTone.textContent = tone.name;
   resultSeal.textContent = seal.nameEs;
   resultColor.textContent = seal.color;
   resultCopy.textContent = buildReading(seal, tone);
-  resultSealMeta.textContent = `Sello: poder ${seal.power}, accion ${seal.action}, esencia ${seal.essence}. ${seal.nameEs} ${seal.phrase}.`;
-  resultToneMeta.textContent = `Tono: funcion ${tone.function}, accion ${tone.action}, esencia ${tone.essence}. Este tono ${tone.phrase}.`;
-  resultColorMeta.textContent = `Color ${seal.color}: ${COLOR_MEANINGS[seal.color]}.`;
+  resultSealMeta.textContent = `Tu sello trae el poder de ${seal.power.toLowerCase()}, la accion de ${seal.action.toLowerCase()} y la esencia de ${seal.essence.toLowerCase()}. ${seal.nameEs} ${seal.phrase}.`;
+  resultToneMeta.textContent = `Tu tono cumple la funcion de ${tone.function.toLowerCase()}, invita a ${tone.action.toLowerCase()} y despierta ${tone.essence.toLowerCase()}. ${tone.phrase}.`;
+  resultColorMeta.textContent = `En la secuencia de colores, el ${seal.color.toLowerCase()} ${COLOR_MEANINGS[seal.color]}.`;
   resultGuidance.textContent = buildGuidance(seal, tone);
   updateShopLink(seal);
   updateSessionLinks(seal, tone, kinNumber);
