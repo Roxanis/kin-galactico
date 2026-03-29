@@ -1,24 +1,24 @@
 const SOLAR_SEALS = [
-  { name: "Dragon", nameEs: "Dragon", color: "Rojo", power: "Nacimiento", action: "Nutrir", essence: "Ser", phrase: "abre la energia del origen y del cuidado primordial" },
-  { name: "Wind", nameEs: "Viento", color: "Blanco", power: "Espiritu", action: "Comunicar", essence: "Aliento", phrase: "mueve la palabra, el aliento y la inspiracion" },
-  { name: "Night", nameEs: "Noche", color: "Azul", power: "Abundancia", action: "Sonar", essence: "Intuicion", phrase: "conecta con el mundo interior, el sueno y la vision profunda" },
-  { name: "Seed", nameEs: "Semilla", color: "Amarillo", power: "Florecimiento", action: "Atinar", essence: "Conciencia", phrase: "ordena el crecimiento y la intencion de florecer" },
-  { name: "Serpent", nameEs: "Serpiente", color: "Rojo", power: "Fuerza Vital", action: "Sobrevivir", essence: "Instinto", phrase: "despierta el cuerpo, la fuerza vital y la alerta" },
-  { name: "Worldbridger", nameEs: "Enlazador de Mundos", color: "Blanco", power: "Muerte", action: "Igualar", essence: "Oportunidad", phrase: "invita a soltar, enlazar planos y abrir transiciones" },
-  { name: "Hand", nameEs: "Mano", color: "Azul", power: "Realizacion", action: "Conocer", essence: "Curacion", phrase: "lleva a actuar con presencia y capacidad sanadora" },
-  { name: "Star", nameEs: "Estrella", color: "Amarillo", power: "Elegancia", action: "Embellecer", essence: "Arte", phrase: "ordena la armonia, la belleza y la expresion artistica" },
-  { name: "Moon", nameEs: "Luna", color: "Rojo", power: "Agua Universal", action: "Purificar", essence: "Flujo", phrase: "moviliza la emocion, la limpieza y el fluir" },
-  { name: "Dog", nameEs: "Perro", color: "Blanco", power: "Corazon", action: "Amar", essence: "Lealtad", phrase: "recuerda el amor fiel, el corazon y el vinculo" },
-  { name: "Monkey", nameEs: "Mono", color: "Azul", power: "Magia", action: "Jugar", essence: "Ilusion", phrase: "activa el juego, la creatividad y la chispa magica" },
-  { name: "Human", nameEs: "Humano", color: "Amarillo", power: "Libre Albedrio", action: "Influenciar", essence: "Sabiduria", phrase: "llama a elegir con conciencia y madurez interior" },
-  { name: "Skywalker", nameEs: "Caminante del Cielo", color: "Rojo", power: "Espacio", action: "Explorar", essence: "Vigilia", phrase: "empuja a expandir limites y explorar nuevos espacios" },
-  { name: "Wizard", nameEs: "Mago", color: "Blanco", power: "Atemporalidad", action: "Encantar", essence: "Receptividad", phrase: "invita a habitar el tiempo con presencia y escucha" },
-  { name: "Eagle", nameEs: "Aguila", color: "Azul", power: "Vision", action: "Crear", essence: "Mente", phrase: "abre perspectiva, imaginacion y mirada amplia" },
-  { name: "Warrior", nameEs: "Guerrero", color: "Amarillo", power: "Inteligencia", action: "Cuestionar", essence: "Intrepidez", phrase: "impulsa preguntas valientes y claridad mental" },
-  { name: "Earth", nameEs: "Tierra", color: "Rojo", power: "Navegacion", action: "Evolucionar", essence: "Sincronicidad", phrase: "alinea con el movimiento, la senal y la sincronizacion" },
-  { name: "Mirror", nameEs: "Espejo", color: "Blanco", power: "Sinfin", action: "Reflejar", essence: "Orden", phrase: "muestra verdad, estructura y nitidez" },
-  { name: "Storm", nameEs: "Tormenta", color: "Azul", power: "Autogeneracion", action: "Catalizar", essence: "Energia", phrase: "renueva, acelera cambios y regenera" },
-  { name: "Sun", nameEs: "Sol", color: "Amarillo", power: "Fuego Universal", action: "Iluminar", essence: "Vida", phrase: "expande claridad, calor y conciencia vital" },
+  { name: "Dragon", nameEs: "Dragon", color: "Rojo", gender: "m", power: "Nacimiento", action: "Nutrir", essence: "Ser", lifeAction: "nutrir la vida", phrase: "abre la energia del origen y del cuidado primordial" },
+  { name: "Wind", nameEs: "Viento", color: "Blanco", gender: "m", power: "Espiritu", action: "Comunicar", essence: "Aliento", lifeAction: "dar voz al espiritu", phrase: "mueve la palabra, el aliento y la inspiracion" },
+  { name: "Night", nameEs: "Noche", color: "Azul", gender: "f", power: "Abundancia", action: "Sonar", essence: "Intuicion", lifeAction: "sonar la abundancia", phrase: "conecta con el mundo interior, el sueno y la vision profunda" },
+  { name: "Seed", nameEs: "Semilla", color: "Amarillo", gender: "f", power: "Florecimiento", action: "Atinar", essence: "Conciencia", lifeAction: "orientar el florecimiento", phrase: "ordena el crecimiento y la intencion de florecer" },
+  { name: "Serpent", nameEs: "Serpiente", color: "Rojo", gender: "f", power: "Fuerza Vital", action: "Sobrevivir", essence: "Instinto", lifeAction: "sostener la vida", phrase: "despierta el cuerpo, la fuerza vital y la alerta" },
+  { name: "Worldbridger", nameEs: "Enlazador de Mundos", color: "Blanco", gender: "m", power: "Muerte", action: "Igualar", essence: "Oportunidad", lifeAction: "soltar y enlazar mundos", phrase: "invita a soltar, enlazar planos y abrir transiciones" },
+  { name: "Hand", nameEs: "Mano", color: "Azul", gender: "f", power: "Realizacion", action: "Conocer", essence: "Curacion", lifeAction: "sanar a traves de la accion", phrase: "lleva a actuar con presencia y capacidad sanadora" },
+  { name: "Star", nameEs: "Estrella", color: "Amarillo", gender: "f", power: "Elegancia", action: "Embellecer", essence: "Arte", lifeAction: "embellecer la experiencia", phrase: "ordena la armonia, la belleza y la expresion artistica" },
+  { name: "Moon", nameEs: "Luna", color: "Rojo", gender: "f", power: "Agua Universal", action: "Purificar", essence: "Flujo", lifeAction: "purificar y dejar fluir", phrase: "moviliza la emocion, la limpieza y el fluir" },
+  { name: "Dog", nameEs: "Perro", color: "Blanco", gender: "m", power: "Corazon", action: "Amar", essence: "Lealtad", lifeAction: "amar con lealtad", phrase: "recuerda el amor fiel, el corazon y el vinculo" },
+  { name: "Monkey", nameEs: "Mono", color: "Azul", gender: "m", power: "Magia", action: "Jugar", essence: "Ilusion", lifeAction: "jugar y abrir la magia", phrase: "activa el juego, la creatividad y la chispa magica" },
+  { name: "Human", nameEs: "Humano", color: "Amarillo", gender: "m", power: "Libre Albedrio", action: "Influenciar", essence: "Sabiduria", lifeAction: "elegir con conciencia", phrase: "llama a elegir con conciencia y madurez interior" },
+  { name: "Skywalker", nameEs: "Caminante del Cielo", color: "Rojo", gender: "m", power: "Espacio", action: "Explorar", essence: "Vigilia", lifeAction: "explorar nuevos espacios", phrase: "empuja a expandir limites y explorar nuevos espacios" },
+  { name: "Wizard", nameEs: "Mago", color: "Blanco", gender: "m", power: "Atemporalidad", action: "Encantar", essence: "Receptividad", lifeAction: "encantar desde la presencia", phrase: "invita a habitar el tiempo con presencia y escucha" },
+  { name: "Eagle", nameEs: "Aguila", color: "Azul", gender: "f", power: "Vision", action: "Crear", essence: "Mente", lifeAction: "crear con vision", phrase: "abre perspectiva, imaginacion y mirada amplia" },
+  { name: "Warrior", nameEs: "Guerrero", color: "Amarillo", gender: "m", power: "Inteligencia", action: "Cuestionar", essence: "Intrepidez", lifeAction: "cuestionar con valentia", phrase: "impulsa preguntas valientes y claridad mental" },
+  { name: "Earth", nameEs: "Tierra", color: "Rojo", gender: "f", power: "Navegacion", action: "Evolucionar", essence: "Sincronicidad", lifeAction: "evolucionar con sincronias", phrase: "alinea con el movimiento, la senal y la sincronizacion" },
+  { name: "Mirror", nameEs: "Espejo", color: "Blanco", gender: "m", power: "Sinfin", action: "Reflejar", essence: "Orden", lifeAction: "reflejar la verdad", phrase: "muestra verdad, estructura y nitidez" },
+  { name: "Storm", nameEs: "Tormenta", color: "Azul", gender: "f", power: "Autogeneracion", action: "Catalizar", essence: "Energia", lifeAction: "catalizar la transformacion", phrase: "renueva, acelera cambios y regenera" },
+  { name: "Sun", nameEs: "Sol", color: "Amarillo", gender: "m", power: "Fuego Universal", action: "Iluminar", essence: "Vida", lifeAction: "iluminar la vida", phrase: "expande claridad, calor y conciencia vital" },
 ];
 
 const GALACTIC_TONES = [
@@ -73,6 +73,61 @@ const TONE_INFINITIVES = {
   Trasciende: "trascender",
 };
 
+const TONE_PULSES = {
+  Magnetico: "un pulso de proposito y atraccion",
+  Lunar: "un pulso de desafio y equilibrio",
+  Electrico: "un pulso de movimiento y servicio",
+  Autoexistente: "un pulso de forma y definicion",
+  Entonado: "un pulso de radiancia y direccion",
+  Ritmico: "un pulso de orden y balance",
+  Resonante: "un pulso de sintonia e inspiracion",
+  Galactico: "un pulso de integridad y coherencia",
+  Solar: "un pulso de realizacion e intencion",
+  Planetario: "un pulso de manifestacion y concrecion",
+  Espectral: "un pulso de liberacion y desapego",
+  Cristal: "un pulso de cooperacion y encuentro",
+  Cosmico: "un pulso de presencia y trascendencia",
+};
+
+const TONE_ACTION_EXPRESSIONS = {
+  Magnetico: "atraer con proposito",
+  Lunar: "estabilizar lo que pide equilibrio",
+  Electrico: "vincular desde el servicio",
+  Autoexistente: "dar forma a lo esencial",
+  Entonado: "dirigir tu energia con radiancia",
+  Ritmico: "ordenar lo que necesita balance",
+  Resonante: "escuchar e inspirar con mas sintonia",
+  Galactico: "vivir con mayor coherencia",
+  Solar: "enfocar tu energia con intencion",
+  Planetario: "dar cuerpo a lo que deseas manifestar",
+  Espectral: "liberar lo que ya cumplio su ciclo",
+  Cristal: "compartir y cooperar con otros",
+  Cosmico: "trascender desde la presencia",
+};
+
+const TONE_ADJECTIVES = {
+  Magnetico: { m: "Magnetico", f: "Magnetica" },
+  Lunar: { m: "Lunar", f: "Lunar" },
+  Electrico: { m: "Electrico", f: "Electrica" },
+  Autoexistente: { m: "Autoexistente", f: "Autoexistente" },
+  Entonado: { m: "Entonado", f: "Entonada" },
+  Ritmico: { m: "Ritmico", f: "Ritmica" },
+  Resonante: { m: "Resonante", f: "Resonante" },
+  Galactico: { m: "Galactico", f: "Galactica" },
+  Solar: { m: "Solar", f: "Solar" },
+  Planetario: { m: "Planetario", f: "Planetaria" },
+  Espectral: { m: "Espectral", f: "Espectral" },
+  Cristal: { m: "Cristal", f: "Cristal" },
+  Cosmico: { m: "Cosmico", f: "Cosmica" },
+};
+
+const COLOR_ADJECTIVES = {
+  Rojo: { m: "Rojo", f: "Roja" },
+  Blanco: { m: "Blanco", f: "Blanca" },
+  Azul: { m: "Azul", f: "Azul" },
+  Amarillo: { m: "Amarillo", f: "Amarilla" },
+};
+
 const MONTH_OFFSETS = [0, 31, 59, 90, 120, 151, 181, 212, 243, 13, 44, 74];
 const YEAR_TABLE_BASE_YEAR = 1994;
 const YEAR_TABLE_BASE_VALUE = 42;
@@ -118,6 +173,18 @@ function getYearValue(year) {
   return positiveModulo(YEAR_TABLE_BASE_VALUE - 1 + distance * YEAR_TABLE_STEP, 260) + 1;
 }
 
+function getToneDisplayName(tone, seal) {
+  return TONE_ADJECTIVES[tone.name]?.[seal.gender] || tone.name;
+}
+
+function getColorDisplayName(seal) {
+  return COLOR_ADJECTIVES[seal.color]?.[seal.gender] || seal.color;
+}
+
+function capitalize(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
 function calculateKin(dateString) {
   const { year, month, day } = normalizeDate(dateString);
   const yearValue = getYearValue(year);
@@ -155,7 +222,9 @@ function updateShopLink(seal) {
 }
 
 function buildReading(seal, tone) {
-  return `Tu firma ${seal.nameEs} ${tone.name} ${seal.color} trae una energia que puede invitarte a ${seal.action.toLowerCase()} desde ${seal.essence.toLowerCase()} y a reconocer en tu camino la medicina de ${seal.power.toLowerCase()}. El tono ${tone.name.toLowerCase()} le da a esta frecuencia un pulso que acompana este aprendizaje y abre la posibilidad de ${tone.essence.toLowerCase()}.`;
+  const toneDisplay = getToneDisplayName(tone, seal);
+
+  return `Tu firma ${seal.nameEs} ${toneDisplay} ${getColorDisplayName(seal)} porta una energia que puede invitarte a ${seal.lifeAction} desde una escucha mas consciente de ${seal.essence.toLowerCase()}. Es una frecuencia que puede ayudarte a reconocer, en tu propio camino, la medicina de ${seal.power.toLowerCase()} que habita en ti.`;
 }
 
 function buildGuidance(seal, tone) {
@@ -174,17 +243,19 @@ function updateSessionLinks(seal, tone, kinNumber) {
 function updateResult(name, dateString) {
   const { kinNumber, tone, seal } = calculateKin(dateString);
   const displayName = name.trim() || "Tu firma";
+  const toneDisplay = getToneDisplayName(tone, seal);
+  const colorDisplay = getColorDisplayName(seal);
 
-  resultTitle.textContent = `Kin ${kinNumber}: ${seal.nameEs} ${tone.name} ${seal.color}`;
+  resultTitle.textContent = `Kin ${kinNumber}: ${seal.nameEs} ${toneDisplay} ${colorDisplay}`;
   resultSummary.textContent = `${displayName}, tu firma galactica une el sello ${seal.nameEs} con el tono ${tone.name} y abre una primera clave para comprender la energia que acompana tu camino.`;
   resultKin.textContent = `Kin ${kinNumber}`;
   resultTone.textContent = tone.name;
   resultSeal.textContent = seal.nameEs;
   resultColor.textContent = seal.color;
   resultCopy.textContent = buildReading(seal, tone);
-  resultSealMeta.textContent = `Tu sello trae el poder de ${seal.power.toLowerCase()}, la accion de ${seal.action.toLowerCase()} y la esencia de ${seal.essence.toLowerCase()}. ${seal.nameEs} ${seal.phrase} y puede hacer visible una cualidad profunda de tu energia natal.`;
-  resultToneMeta.textContent = `Tu tono trae la funcion de ${TONE_INFINITIVES[tone.function] || tone.function.toLowerCase()}, la accion de ${TONE_INFINITIVES[tone.action] || tone.action.toLowerCase()} y la esencia de ${tone.essence.toLowerCase()}. ${tone.phrase} y muestra la manera en que tu energia busca expresarse.`;
-  resultColorMeta.textContent = `En la secuencia de colores, el ${seal.color.toLowerCase()} marca una energia que ${COLOR_MEANINGS[seal.color]}. Esta capa puede mostrar el movimiento que tu proceso esta atravesando en este momento.`;
+  resultSealMeta.textContent = `El sello de ${seal.nameEs} trae consigo el poder de ${seal.power.toLowerCase()}, la accion de ${seal.lifeAction} y la esencia de ${seal.essence.toLowerCase()}. ${seal.nameEs} ${seal.phrase}, afinando tu percepcion y haciendo visible una cualidad profunda de tu energia natal.`;
+  resultToneMeta.textContent = `El tono ${tone.name} le da a esta energia ${TONE_PULSES[tone.name] || "un pulso singular"}. Puede mostrar la capacidad de ${TONE_ACTION_EXPRESSIONS[tone.name] || (TONE_INFINITIVES[tone.action] || tone.action.toLowerCase())}. ${capitalize(tone.phrase)} y sugiere la manera en que tu energia busca tomar forma en la vida.`;
+  resultColorMeta.textContent = `En la secuencia de colores, el ${seal.color.toLowerCase()} ${COLOR_MEANINGS[seal.color]}. Esto puede señalar una energia vinculada al comienzo, al impulso y al movimiento que hoy quiere abrirse paso en tu proceso.`;
   resultGuidance.textContent = buildGuidance(seal, tone);
   updateShopLink(seal);
   updateSessionLinks(seal, tone, kinNumber);
