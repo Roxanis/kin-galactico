@@ -128,6 +128,8 @@ const COLOR_ADJECTIVES = {
   Amarillo: { m: "Amarillo", f: "Amarilla" },
 };
 
+const GUIDE_FAMILY_SHIFTS = [0, 3, 1, 4, 2];
+
 const MONTH_OFFSETS = [0, 31, 59, 90, 120, 151, 181, 212, 243, 13, 44, 74];
 const YEAR_TABLE_BASE_YEAR = 1994;
 const YEAR_TABLE_BASE_VALUE = 42;
@@ -146,6 +148,8 @@ const form = document.querySelector("#kin-form");
 const resultCard = document.querySelector("#result-card");
 const resultTitle = document.querySelector("#result-title");
 const resultSummary = document.querySelector("#result-summary");
+const emblemKin = document.querySelector("#emblem-kin");
+const emblemSeal = document.querySelector("#emblem-seal");
 const resultKin = document.querySelector("#result-kin");
 const resultTone = document.querySelector("#result-tone");
 const resultSeal = document.querySelector("#result-seal");
@@ -155,6 +159,13 @@ const resultSealMeta = document.querySelector("#result-seal-meta");
 const resultToneMeta = document.querySelector("#result-tone-meta");
 const resultColorMeta = document.querySelector("#result-color-meta");
 const resultGuidance = document.querySelector("#result-guidance");
+const waveTitle = document.querySelector("#wave-title");
+const waveCopy = document.querySelector("#wave-copy");
+const oracleGuide = document.querySelector("#oracle-guide");
+const oracleAnalog = document.querySelector("#oracle-analog");
+const oracleAntipode = document.querySelector("#oracle-antipode");
+const oracleOccult = document.querySelector("#oracle-occult");
+const oracleCopy = document.querySelector("#oracle-copy");
 const shopLink = document.querySelector("#shop-link");
 const sessionLink = document.querySelector("#session-link");
 const sessionInfoLink = document.querySelector("#session-info-link");
@@ -183,6 +194,59 @@ function getColorDisplayName(seal) {
 
 function capitalize(text) {
   return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+function getSealByNumber(sealNumber) {
+  return SOLAR_SEALS[positiveModulo(sealNumber - 1, 20)];
+}
+
+function getKinData(kinNumber) {
+  const normalizedKin = positiveModulo(kinNumber - 1, 260) + 1;
+  const tone = GALACTIC_TONES[positiveModulo(normalizedKin - 1, 13)];
+  const seal = SOLAR_SEALS[positiveModulo(normalizedKin - 1, 20)];
+
+  return {
+    kinNumber: normalizedKin,
+    tone,
+    seal,
+  };
+}
+
+function getWaveData(kinNumber, tone) {
+  const waveStartKin = positiveModulo(kinNumber - toneIndexFromName(tone.name), 260) + 1;
+  const waveSeal = getKinData(waveStartKin).seal;
+
+  return {
+    waveStartKin,
+    waveSeal,
+  };
+}
+
+function toneIndexFromName(toneName) {
+  return GALACTIC_TONES.findIndex((tone) => tone.name === toneName);
+}
+
+function getGuideSeal(seal, tone) {
+  const sameColorFamily = SOLAR_SEALS.filter((item) => item.color === seal.color);
+  const familyIndex = sameColorFamily.findIndex((item) => item.name === seal.name);
+  const shift = GUIDE_FAMILY_SHIFTS[positiveModulo(toneIndexFromName(tone.name), 5)];
+
+  return sameColorFamily[positiveModulo(familyIndex + shift, sameColorFamily.length)];
+}
+
+function buildOracleData(kinNumber, seal, tone) {
+  const guideSeal = getGuideSeal(seal, tone);
+  const analogSeal = getSealByNumber(19 - (SOLAR_SEALS.indexOf(seal) + 1));
+  const antipodeSeal = getSealByNumber((SOLAR_SEALS.indexOf(seal) + 1) + 10);
+  const occultKin = 261 - kinNumber;
+  const occultData = getKinData(occultKin);
+
+  return {
+    guide: guideSeal,
+    analog: analogSeal,
+    antipode: antipodeSeal,
+    occult: occultData,
+  };
 }
 
 function calculateKin(dateString) {
@@ -231,6 +295,14 @@ function buildGuidance(seal, tone) {
   return `En la vida cotidiana, esta combinacion puede mostrarte como habitas tus vinculos, tus decisiones y tu ritmo interno. Tu kin no te encierra: te orienta. Puede ayudarte a escucharte con mas suavidad y a dar pasos mas alineados con lo que hoy esta queriendo abrirse en ti.`;
 }
 
+function buildWaveCopy(waveSeal) {
+  return `Tu Onda Encantada nace en ${waveSeal.nameEs} y puede leerse como el portal evolutivo desde el cual tu kin comienza su recorrido. Esta capa muestra el gran aprendizaje de fondo que acompana tu proceso y la direccion mas amplia de tu camino.`;
+}
+
+function buildOracleCopy(oracle) {
+  return `Tu oraculo muestra una trama de apoyo y aprendizaje: ${oracle.guide.nameEs} aparece como energia guia, ${oracle.analog.nameEs} como resonancia afectiva, ${oracle.antipode.nameEs} como desafio evolutivo y ${oracle.occult.seal.nameEs} como medicina escondida que madura en silencio.`;
+}
+
 function updateSessionLinks(seal, tone, kinNumber) {
   const message = encodeURIComponent(
     `Hola Rox, quiero reservar mi interpretacion de Kin Maya. Mi resultado fue Kin ${kinNumber}: ${seal.nameEs} ${tone.name} ${seal.color}.`
@@ -245,9 +317,13 @@ function updateResult(name, dateString) {
   const displayName = name.trim() || "Tu firma";
   const toneDisplay = getToneDisplayName(tone, seal);
   const colorDisplay = getColorDisplayName(seal);
+  const wave = getWaveData(kinNumber, tone);
+  const oracle = buildOracleData(kinNumber, seal, tone);
 
   resultTitle.textContent = `Kin ${kinNumber}: ${seal.nameEs} ${toneDisplay} ${colorDisplay}`;
   resultSummary.textContent = `${displayName}, tu firma galactica une el sello ${seal.nameEs} con el tono ${tone.name} y abre una primera clave para comprender la energia que acompana tu camino.`;
+  emblemKin.textContent = kinNumber;
+  emblemSeal.textContent = `${seal.nameEs} ${toneDisplay}`;
   resultKin.textContent = `Kin ${kinNumber}`;
   resultTone.textContent = tone.name;
   resultSeal.textContent = seal.nameEs;
@@ -257,6 +333,13 @@ function updateResult(name, dateString) {
   resultToneMeta.textContent = `El tono ${tone.name} le da a esta energia ${TONE_PULSES[tone.name] || "un pulso singular"}. Puede mostrar la capacidad de ${TONE_ACTION_EXPRESSIONS[tone.name] || (TONE_INFINITIVES[tone.action] || tone.action.toLowerCase())}. ${capitalize(tone.phrase)} y sugiere la manera en que tu energia busca tomar forma en la vida.`;
   resultColorMeta.textContent = `En la secuencia de colores, el ${seal.color.toLowerCase()} ${COLOR_MEANINGS[seal.color]}. Esto puede señalar una energia vinculada al comienzo, al impulso y al movimiento que hoy quiere abrirse paso en tu proceso.`;
   resultGuidance.textContent = buildGuidance(seal, tone);
+  waveTitle.textContent = `Onda encantada de ${wave.waveSeal.nameEs}`;
+  waveCopy.textContent = buildWaveCopy(wave.waveSeal);
+  oracleGuide.textContent = oracle.guide.nameEs;
+  oracleAnalog.textContent = oracle.analog.nameEs;
+  oracleAntipode.textContent = oracle.antipode.nameEs;
+  oracleOccult.textContent = `Kin ${oracle.occult.kinNumber}: ${oracle.occult.seal.nameEs}`;
+  oracleCopy.textContent = buildOracleCopy(oracle);
   updateShopLink(seal);
   updateSessionLinks(seal, tone, kinNumber);
 

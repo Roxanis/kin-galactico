@@ -208,6 +208,41 @@ button:hover,
   margin: 22px 0;
 }
 
+.kin-emblem {
+  display: grid;
+  place-items: center;
+  margin: 24px 0 8px;
+}
+
+.kin-emblem-inner {
+  display: grid;
+  place-items: center;
+  width: 168px;
+  height: 168px;
+  border: 1px solid rgba(159, 89, 51, 0.18);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.92), transparent 35%),
+    radial-gradient(circle, rgba(217, 193, 161, 0.44), rgba(255, 248, 242, 0.88));
+  box-shadow:
+    inset 0 0 0 10px rgba(255, 255, 255, 0.34),
+    0 22px 48px rgba(88, 54, 33, 0.14);
+}
+
+.kin-emblem-number {
+  font-family: "Italiana", serif;
+  font-size: 2.6rem;
+  line-height: 1;
+}
+
+.kin-emblem-seal {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .result-detail {
   margin: 10px 0 0;
 }
@@ -218,6 +253,47 @@ button:hover,
   border-top: 1px solid var(--line);
   color: var(--text);
   font-size: 1.05rem;
+}
+
+.insight-sections {
+  display: grid;
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.insight-block {
+  padding: 18px 18px 16px;
+  border: 1px solid rgba(83, 50, 29, 0.1);
+  border-radius: 24px;
+  background: rgba(255, 251, 246, 0.52);
+}
+
+.insight-label {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.insight-block h3 {
+  margin: 0;
+  font-family: "Italiana", serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+}
+
+.insight-copy {
+  margin: 12px 0 0;
+  color: var(--muted);
+}
+
+.oracle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 18px;
+  margin-top: 14px;
 }
 
 .result-actions {
@@ -282,5 +358,9 @@ dd {
 
   .hero {
     padding: 22px 20px 18px;
+  }
+
+  .oracle-grid {
+    grid-template-columns: 1fr;
   }
 }
