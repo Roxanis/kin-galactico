@@ -1,17 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Monkey">
-<defs>
-  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-    <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#3f6c9f" flood-opacity="0.28"/>
-  </filter>
-</defs>
-<g filter="url(#shadow)">
-  <rect x="76" y="76" width="360" height="360" rx="56" fill="#4f86c6"/>
-</g>
-<rect x="76" y="76" width="360" height="360" rx="56" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="6"/>
-<circle cx="228" cy="222" r="20" fill="#0f1620"/>
-<circle cx="312" cy="222" r="20" fill="#0f1620"/>
-<path d="M180 214C196 184 224 168 270 168C316 168 344 184 360 214" fill="none" stroke="#0f1620" stroke-width="11" stroke-linecap="round"/>
-<path d="M212 292C226 266 246 252 270 252C294 252 314 266 328 292" fill="none" stroke="#0f1620" stroke-width="11" stroke-linecap="round"/>
-<path d="M188 328C210 350 236 362 270 362C304 362 330 350 352 328" fill="none" stroke="#0f1620" stroke-width="11" stroke-linecap="round"/>
-<path d="M270 206V350" stroke="#0f1620" stroke-width="10" stroke-linecap="round"/>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#3f6c9f" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <rect x="76" y="76" width="360" height="360" rx="56" fill="#4f86c6"/>
+  </g>
+  <rect x="76" y="76" width="360" height="360" rx="56" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="6"/>
+  
+  <circle cx="228" cy="220" r="18" fill="#0f1620"/>
+  <circle cx="312" cy="220" r="18" fill="#0f1620"/>
+  <path d="M186 212C202 182 230 166 270 166C312 166 340 182 356 212" fill="none" stroke="#0f1620" stroke-width="11" stroke-linecap="round"/>
+  <path d="M270 206V352" stroke="#0f1620" stroke-width="10" stroke-linecap="round"/>
+  <path d="M214 286C230 262 248 250 270 250C294 250 312 264 328 292" fill="none" stroke="#0f1620" stroke-width="11" stroke-linecap="round"/>
+  <path d="M188 330C208 352 236 364 270 364C302 364 330 354 352 334" fill="none" stroke="#0f1620" stroke-width="11" stroke-linecap="round"/>
+  <path d="M330 286C344 280 356 278 368 280" fill="none" stroke="#0f1620" stroke-width="9" stroke-linecap="round"/>
+    
 </svg>

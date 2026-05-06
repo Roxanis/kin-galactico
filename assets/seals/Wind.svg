@@ -1,17 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Wind">
-<defs>
-  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-    <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#d8cdc0" flood-opacity="0.28"/>
-  </filter>
-</defs>
-<g filter="url(#shadow)">
-  <rect x="76" y="76" width="360" height="360" rx="56" fill="#fffaf3"/>
-</g>
-<rect x="76" y="76" width="360" height="360" rx="56" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="6"/>
-<path d="M204 232C216 198 242 178 278 178C308 178 330 192 342 218" fill="none" stroke="#1f1714" stroke-width="11" stroke-linecap="round"/>
-<path d="M216 212C236 228 256 234 278 234C300 234 320 228 340 212" fill="none" stroke="#1f1714" stroke-width="10" stroke-linecap="round"/>
-<path d="M240 244V318" stroke="#1f1714" stroke-width="11" stroke-linecap="round"/>
-<path d="M300 244V350" stroke="#1f1714" stroke-width="11" stroke-linecap="round"/>
-<path d="M224 334C246 320 262 314 282 314C304 314 324 322 344 338" fill="none" stroke="#1f1714" stroke-width="11" stroke-linecap="round"/>
-<circle cx="348" cy="206" r="8" fill="#1f1714"/>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#d8cdc0" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <rect x="76" y="76" width="360" height="360" rx="56" fill="#fffaf3"/>
+  </g>
+  <rect x="76" y="76" width="360" height="360" rx="56" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="6"/>
+  
+  <path d="M204 218C220 188 246 170 280 170C306 170 328 182 344 206" fill="none" stroke="#1f1714" stroke-width="11" stroke-linecap="round"/>
+  <circle cx="248" cy="226" r="11" fill="none" stroke="#1f1714" stroke-width="9"/>
+  <circle cx="316" cy="226" r="11" fill="none" stroke="#1f1714" stroke-width="9"/>
+  <path d="M234 270C254 284 270 290 286 290C302 290 320 282 340 266" fill="none" stroke="#1f1714" stroke-width="11" stroke-linecap="round"/>
+  <path d="M248 240V324" stroke="#1f1714" stroke-width="11" stroke-linecap="round"/>
+  <path d="M310 238V346" stroke="#1f1714" stroke-width="11" stroke-linecap="round"/>
+  <path d="M214 336C236 322 258 316 282 316C306 316 326 324 346 340" fill="none" stroke="#1f1714" stroke-width="11" stroke-linecap="round"/>
+    
 </svg>

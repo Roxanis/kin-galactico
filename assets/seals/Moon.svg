@@ -1,17 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Moon">
-<defs>
-  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-    <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#b53333" flood-opacity="0.28"/>
-  </filter>
-</defs>
-<g filter="url(#shadow)">
-  <rect x="76" y="76" width="360" height="360" rx="56" fill="#d84545"/>
-</g>
-<rect x="76" y="76" width="360" height="360" rx="56" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="6"/>
-<path d="M220 186H340C364 186 384 206 384 230V354" fill="none" stroke="#fff6ef" stroke-width="12" stroke-linejoin="round"/>
-<path d="M260 186V254" stroke="#fff6ef" stroke-width="10"/>
-<path d="M300 186V242" stroke="#fff6ef" stroke-width="10"/>
-<circle cx="302" cy="288" r="34" fill="none" stroke="#fff6ef" stroke-width="10"/>
-<path d="M250 352C270 334 286 328 304 328C322 328 338 334 358 352" fill="none" stroke="#fff6ef" stroke-width="11" stroke-linecap="round"/>
-<path d="M384 246H408" stroke="#fff6ef" stroke-width="10" stroke-linecap="round"/>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#b53333" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <rect x="76" y="76" width="360" height="360" rx="56" fill="#d84545"/>
+  </g>
+  <rect x="76" y="76" width="360" height="360" rx="56" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="6"/>
+  
+  <path d="M214 176H330C358 176 382 200 382 228V350" fill="none" stroke="#fff6ef" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M254 176V250" stroke="#fff6ef" stroke-width="10" stroke-linecap="round"/>
+  <path d="M292 176V236" stroke="#fff6ef" stroke-width="10" stroke-linecap="round"/>
+  <path d="M270 286C270 260 286 244 308 244C330 244 346 260 346 284C346 308 330 326 308 326C286 326 270 308 270 286Z" fill="none" stroke="#fff6ef" stroke-width="10"/>
+  <path d="M246 350C264 334 282 326 304 326C326 326 344 334 362 350" fill="none" stroke="#fff6ef" stroke-width="11" stroke-linecap="round"/>
+  <path d="M382 248H406" stroke="#fff6ef" stroke-width="10" stroke-linecap="round"/>
+    
 </svg>
