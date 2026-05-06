@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title>Perro</title>
+  <desc>Sello solar Perro</desc>
+  <defs>
+    <radialGradient id="bg" cx="28%" cy="24%">
+      <stop offset="0%" stop-color="#fffaf5"/>
+      <stop offset="100%" stop-color="#d9d1c7"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="640" rx="120" fill="url(#bg)"/>
+  <rect x="32" y="32" width="576" height="576" rx="96" fill="none" stroke="#8a7462" stroke-width="5" opacity="0.78"/>
+  <circle cx="320" cy="286" r="198" fill="none" stroke="#8a7462" stroke-width="4" opacity="0.55"/>
+  <circle cx="320" cy="286" r="230" fill="none" stroke="#8a7462" stroke-width="2.5" opacity="0.24" stroke-dasharray="5 18"/>
+  <path d="M230 350C230 266 270 202 320 176C370 202 410 266 410 350C410 402 370 448 320 468C270 448 230 402 230 350Z" fill="none" stroke="#2f241d" stroke-width="12"/><path d="M274 238L242 194" stroke="#8a7462" stroke-width="10" stroke-linecap="round"/><path d="M366 238L398 194" stroke="#8a7462" stroke-width="10" stroke-linecap="round"/>
+  <text x="320" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#2f241d" letter-spacing="4">PERRO</text>
+</svg>

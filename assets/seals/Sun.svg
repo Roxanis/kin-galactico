@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title>Sol</title>
+  <desc>Sello solar Sol</desc>
+  <defs>
+    <radialGradient id="bg" cx="28%" cy="24%">
+      <stop offset="0%" stop-color="#fffaf5"/>
+      <stop offset="100%" stop-color="#d4ab4e"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="640" rx="120" fill="url(#bg)"/>
+  <rect x="32" y="32" width="576" height="576" rx="96" fill="none" stroke="#fff0b8" stroke-width="5" opacity="0.78"/>
+  <circle cx="320" cy="286" r="198" fill="none" stroke="#fff0b8" stroke-width="4" opacity="0.55"/>
+  <circle cx="320" cy="286" r="230" fill="none" stroke="#fff0b8" stroke-width="2.5" opacity="0.24" stroke-dasharray="5 18"/>
+  <circle cx="320" cy="286" r="74" fill="none" stroke="#2f241d" stroke-width="12"/><path d="M320 160V208M320 364V412M194 286H242M398 286H446M230 196L264 230M376 342L410 376M230 376L264 342M376 230L410 196" stroke="#fff0b8" stroke-width="10" stroke-linecap="round"/>
+  <text x="320" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#2f241d" letter-spacing="4">SOL</text>
+</svg>

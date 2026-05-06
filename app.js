@@ -151,6 +151,7 @@ const SESSION_PAGE_URL =
 const SESSION_BOOKING_URL =
   APP_CONFIG.sessionBookingUrl || "https://wa.me/541169047724";
 const KIN_IMAGE_BASE_PATH = APP_CONFIG.kinImageBasePath || "";
+const SEAL_IMAGE_BASE_PATH = APP_CONFIG.sealImageBasePath || "./assets/seals";
 const KIN_IMAGES = APP_CONFIG.kinImages || {};
 
 const form = document.querySelector("#kin-form");
@@ -304,7 +305,7 @@ function resolveShopUrl(seal) {
   return DEFAULT_SHOP_URL;
 }
 
-function resolveKinImage(kinNumber) {
+function resolveKinImage(kinNumber, seal) {
   if (KIN_IMAGES[kinNumber]) {
     return KIN_IMAGES[kinNumber];
   }
@@ -312,6 +313,10 @@ function resolveKinImage(kinNumber) {
   if (KIN_IMAGE_BASE_PATH) {
     const padded = String(kinNumber).padStart(3, "0");
     return `${KIN_IMAGE_BASE_PATH.replace(/\/$/, "")}/kin-${padded}.png`;
+  }
+
+  if (SEAL_IMAGE_BASE_PATH && seal?.name) {
+    return `${SEAL_IMAGE_BASE_PATH.replace(/\/$/, "")}/${seal.name}.svg`;
   }
 
   return "";
@@ -466,11 +471,9 @@ function buildKinSvg(kinNumber, seal, toneDisplay) {
       <rect x="12" y="12" width="176" height="176" rx="30" fill="none" stroke="${palette.accent}" stroke-width="1.2" opacity="0.7" />
       <circle cx="100" cy="92" r="64" fill="none" stroke="${palette.accent}" stroke-width="0.9" opacity="0.5" />
       ${dots}
-      <g transform="translate(0 -4)">
+      <g transform="translate(0 8)">
         ${glyph}
       </g>
-      <text x="100" y="156" text-anchor="middle" font-family="Georgia, serif" font-size="27" fill="${palette.text}">Kin ${kinNumber}</text>
-      <text x="100" y="174" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" letter-spacing="1.8" fill="${palette.text}">${seal.nameEs.toUpperCase()} · ${toneDisplay.toUpperCase()}</text>
     </svg>
   `.trim();
 
@@ -478,7 +481,7 @@ function buildKinSvg(kinNumber, seal, toneDisplay) {
 }
 
 function updateKinImage(kinNumber, seal, toneDisplay) {
-  const imageUrl = resolveKinImage(kinNumber) || buildKinSvg(kinNumber, seal, toneDisplay);
+  const imageUrl = resolveKinImage(kinNumber, seal) || buildKinSvg(kinNumber, seal, toneDisplay);
 
   if (imageUrl) {
     kinImage.src = imageUrl;

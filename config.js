@@ -4,6 +4,7 @@ window.KIN_APP_CONFIG = {
   sessionPageUrl: "https://www.rox-experiences.com/astrologia-maya-tzolkin/",
   sessionBookingUrl: "https://wa.me/541169047724",
   kinImageBasePath: "",
+  sealImageBasePath: "./assets/seals",
   collections: {
     Dragon: "/productos/",
     Wind: "/productos/",

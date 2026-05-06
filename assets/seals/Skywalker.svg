@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title>Caminante</title>
+  <desc>Sello solar Caminante</desc>
+  <defs>
+    <radialGradient id="bg" cx="28%" cy="24%">
+      <stop offset="0%" stop-color="#fffaf5"/>
+      <stop offset="100%" stop-color="#c45d46"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="640" rx="120" fill="url(#bg)"/>
+  <rect x="32" y="32" width="576" height="576" rx="96" fill="none" stroke="#f2d0b8" stroke-width="5" opacity="0.78"/>
+  <circle cx="320" cy="286" r="198" fill="none" stroke="#f2d0b8" stroke-width="4" opacity="0.55"/>
+  <circle cx="320" cy="286" r="230" fill="none" stroke="#f2d0b8" stroke-width="2.5" opacity="0.24" stroke-dasharray="5 18"/>
+  <path d="M320 140V436" stroke="#fff7ef" stroke-width="12" stroke-linecap="round"/><path d="M236 232L320 150L404 232" fill="none" stroke="#f2d0b8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M236 390L320 472L404 390" fill="none" stroke="#f2d0b8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="320" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#fff7ef" letter-spacing="4">CAMINANTE</text>
+</svg>

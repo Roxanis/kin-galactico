@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title>Viento</title>
+  <desc>Sello solar Viento</desc>
+  <defs>
+    <radialGradient id="bg" cx="28%" cy="24%">
+      <stop offset="0%" stop-color="#fffaf5"/>
+      <stop offset="100%" stop-color="#d9d1c7"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="640" rx="120" fill="url(#bg)"/>
+  <rect x="32" y="32" width="576" height="576" rx="96" fill="none" stroke="#8a7462" stroke-width="5" opacity="0.78"/>
+  <circle cx="320" cy="286" r="198" fill="none" stroke="#8a7462" stroke-width="4" opacity="0.55"/>
+  <circle cx="320" cy="286" r="230" fill="none" stroke="#8a7462" stroke-width="2.5" opacity="0.24" stroke-dasharray="5 18"/>
+  <path d="M142 318C194 258 274 258 332 296C370 322 406 322 444 288" fill="none" stroke="#2f241d" stroke-width="14" stroke-linecap="round"/><path d="M160 246C206 202 274 202 322 230C348 244 378 244 404 222" fill="none" stroke="#8a7462" stroke-width="10" stroke-linecap="round"/>
+  <text x="320" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#2f241d" letter-spacing="4">VIENTO</text>
+</svg>

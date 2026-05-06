@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title>Noche</title>
+  <desc>Sello solar Noche</desc>
+  <defs>
+    <radialGradient id="bg" cx="28%" cy="24%">
+      <stop offset="0%" stop-color="#fffaf5"/>
+      <stop offset="100%" stop-color="#587998"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="640" rx="120" fill="url(#bg)"/>
+  <rect x="32" y="32" width="576" height="576" rx="96" fill="none" stroke="#d7e6ef" stroke-width="5" opacity="0.78"/>
+  <circle cx="320" cy="286" r="198" fill="none" stroke="#d7e6ef" stroke-width="4" opacity="0.55"/>
+  <circle cx="320" cy="286" r="230" fill="none" stroke="#d7e6ef" stroke-width="2.5" opacity="0.24" stroke-dasharray="5 18"/>
+  <path d="M364 158C312 202 292 274 310 338C330 396 378 436 442 450C398 482 332 494 280 468C204 430 172 340 198 264C224 200 286 154 364 158Z" fill="#f7fbff" opacity="0.92"/><circle cx="396" cy="250" r="24" fill="#d7e6ef"/>
+  <text x="320" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#f7fbff" letter-spacing="4">NOCHE</text>
+</svg>

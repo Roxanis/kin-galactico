@@ -10,6 +10,8 @@ La calculadora ya puede mostrar una imagen por kin.
   - `...`
   - `kin-260.png`
 - Si no encuentra una imagen real, muestra una imagen generada dinamicamente como fallback.
+- Mientras no exista una imagen por kin, la calculadora usa la biblioteca de sellos en
+  `/assets/seals/`.
 
 ## Donde colocar las imagenes
 
