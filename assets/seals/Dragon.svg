@@ -7,15 +7,12 @@
   <g filter="url(#shadow)">
     <rect x="76" y="76" width="360" height="360" rx="56" fill="#d84545"/>
   </g>
-  <rect x="76" y="76" width="360" height="360" rx="56" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="6"/>
-  
-  <path d="M182 170H330C356 170 378 192 378 218V248" fill="none" stroke="#fff6ef" stroke-width="13" stroke-linejoin="round"/>
-  <path d="M182 170V316" stroke="#fff6ef" stroke-width="13" stroke-linecap="round"/>
-  <path d="M222 170V224" stroke="#fff6ef" stroke-width="10" stroke-linecap="round"/>
-  <path d="M258 170V212" stroke="#fff6ef" stroke-width="10" stroke-linecap="round"/>
-  <path d="M294 170V224" stroke="#fff6ef" stroke-width="10" stroke-linecap="round"/>
-  <path d="M330 170V238" stroke="#fff6ef" stroke-width="10" stroke-linecap="round"/>
-  <path d="M238 264C238 234 260 214 286 214C316 214 338 238 338 270C338 306 314 334 286 334C258 334 238 304 238 264Z" fill="none" stroke="#fff6ef" stroke-width="11"/>
-  <path d="M224 344C242 362 262 372 286 372C308 372 324 366 338 354" fill="none" stroke="#fff6ef" stroke-width="11" stroke-linecap="round"/>
-    
+  <rect x="76" y="76" width="360" height="360" rx="56" fill="none" stroke="#fff6ef" stroke-width="8"/>
+  <path d="M184 176H328C358 176 382 200 382 230V342" fill="none" stroke="#fff6ef" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M184 176V342" stroke="#fff6ef" stroke-width="12" stroke-linecap="round"/>
+  <path d="M220 176V228" stroke="#fff6ef" stroke-width="10" stroke-linecap="round"/>
+  <path d="M254 176V216" stroke="#fff6ef" stroke-width="10" stroke-linecap="round"/>
+  <path d="M288 176V228" stroke="#fff6ef" stroke-width="10" stroke-linecap="round"/>
+  <path d="M254 260C254 234 270 216 292 216C314 216 330 234 330 260V292C330 320 314 338 292 338C270 338 254 320 254 292Z" fill="none" stroke="#fff6ef" stroke-width="11"/>
+  <path d="M232 350C250 364 270 372 292 372C312 372 330 366 348 352" fill="none" stroke="#fff6ef" stroke-width="11" stroke-linecap="round"/>
 </svg>

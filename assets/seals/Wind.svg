@@ -7,14 +7,13 @@
   <g filter="url(#shadow)">
     <rect x="76" y="76" width="360" height="360" rx="56" fill="#fffaf3"/>
   </g>
-  <rect x="76" y="76" width="360" height="360" rx="56" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="6"/>
-  
-  <path d="M204 218C220 188 246 170 280 170C306 170 328 182 344 206" fill="none" stroke="#1f1714" stroke-width="11" stroke-linecap="round"/>
-  <circle cx="248" cy="226" r="11" fill="none" stroke="#1f1714" stroke-width="9"/>
-  <circle cx="316" cy="226" r="11" fill="none" stroke="#1f1714" stroke-width="9"/>
-  <path d="M234 270C254 284 270 290 286 290C302 290 320 282 340 266" fill="none" stroke="#1f1714" stroke-width="11" stroke-linecap="round"/>
-  <path d="M248 240V324" stroke="#1f1714" stroke-width="11" stroke-linecap="round"/>
-  <path d="M310 238V346" stroke="#1f1714" stroke-width="11" stroke-linecap="round"/>
-  <path d="M214 336C236 322 258 316 282 316C306 316 326 324 346 340" fill="none" stroke="#1f1714" stroke-width="11" stroke-linecap="round"/>
-    
+  <rect x="76" y="76" width="360" height="360" rx="56" fill="none" stroke="#2a211d" stroke-width="8"/>
+  <path d="M176 218H216" stroke="#1f1714" stroke-width="12" stroke-linecap="round"/>
+  <path d="M296 218H336" stroke="#1f1714" stroke-width="12" stroke-linecap="round"/>
+  <path d="M216 218C224 246 246 262 276 262C306 262 328 246 336 218" fill="none" stroke="#1f1714" stroke-width="12" stroke-linecap="round"/>
+  <path d="M246 262C252 274 258 284 268 292" fill="none" stroke="#1f1714" stroke-width="12" stroke-linecap="round"/>
+  <path d="M306 262C300 274 294 284 284 292" fill="none" stroke="#1f1714" stroke-width="12" stroke-linecap="round"/>
+  <path d="M276 262V318" stroke="#1f1714" stroke-width="12" stroke-linecap="round"/>
+  <path d="M252 286C262 300 268 316 268 336" fill="none" stroke="#1f1714" stroke-width="12" stroke-linecap="round"/>
+  <path d="M300 286C290 300 284 316 284 336" fill="none" stroke="#1f1714" stroke-width="12" stroke-linecap="round"/>
 </svg>

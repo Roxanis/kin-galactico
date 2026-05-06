@@ -7,8 +7,7 @@
   <g filter="url(#shadow)">
     <rect x="76" y="76" width="360" height="360" rx="56" fill="#4f86c6"/>
   </g>
-  <rect x="76" y="76" width="360" height="360" rx="56" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="6"/>
-  
+  <rect x="76" y="76" width="360" height="360" rx="56" fill="none" stroke="#0f1620" stroke-width="8"/>
   <path d="M212 182C226 166 244 158 264 158C284 158 300 166 314 182" fill="none" stroke="#0f1620" stroke-width="11" stroke-linecap="round"/>
   <path d="M314 182C328 166 346 158 366 158C386 158 402 166 416 182" fill="none" stroke="#0f1620" stroke-width="11" stroke-linecap="round"/>
   <path d="M244 220C258 236 274 244 290 244C306 244 322 236 336 220" fill="none" stroke="#0f1620" stroke-width="11" stroke-linecap="round"/>
@@ -18,5 +17,4 @@
   <circle cx="366" cy="292" r="7" fill="#0f1620"/>
   <path d="M336 320V366" stroke="#0f1620" stroke-width="11" stroke-linecap="round"/>
   <path d="M294 346C308 360 322 366 336 366C350 366 364 360 378 346" fill="none" stroke="#0f1620" stroke-width="10" stroke-linecap="round"/>
-    
 </svg>
