@@ -1,16 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
-  <title>Mano</title>
-  <desc>Sello solar Mano</desc>
-  <defs>
-    <radialGradient id="bg" cx="28%" cy="24%">
-      <stop offset="0%" stop-color="#fffaf5"/>
-      <stop offset="100%" stop-color="#587998"/>
-    </radialGradient>
-  </defs>
-  <rect width="640" height="640" rx="120" fill="url(#bg)"/>
-  <rect x="32" y="32" width="576" height="576" rx="96" fill="none" stroke="#d7e6ef" stroke-width="5" opacity="0.78"/>
-  <circle cx="320" cy="286" r="198" fill="none" stroke="#d7e6ef" stroke-width="4" opacity="0.55"/>
-  <circle cx="320" cy="286" r="230" fill="none" stroke="#d7e6ef" stroke-width="2.5" opacity="0.24" stroke-dasharray="5 18"/>
-  <path d="M256 436V260C256 240 282 234 290 254V338" fill="none" stroke="#f7fbff" stroke-width="12" stroke-linecap="round"/><path d="M302 430V228C302 202 334 202 334 228V330" fill="none" stroke="#f7fbff" stroke-width="12" stroke-linecap="round"/><path d="M348 424V248C348 222 380 222 380 248V344" fill="none" stroke="#f7fbff" stroke-width="12" stroke-linecap="round"/><path d="M394 410V278C394 252 426 252 426 278V356" fill="none" stroke="#f7fbff" stroke-width="12" stroke-linecap="round"/><path d="M256 432C282 458 308 470 342 470C382 470 414 458 440 432" fill="none" stroke="#d7e6ef" stroke-width="8" stroke-linecap="round"/>
-  <text x="320" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#f7fbff" letter-spacing="4">MANO</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Hand">
+<defs>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#3f6c9f" flood-opacity="0.28"/>
+  </filter>
+</defs>
+<g filter="url(#shadow)">
+  <rect x="76" y="76" width="360" height="360" rx="56" fill="#4f86c6"/>
+</g>
+<rect x="76" y="76" width="360" height="360" rx="56" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="6"/>
+<path d="M258 352V214C258 196 278 192 284 208V280" fill="none" stroke="#0f1620" stroke-width="12" stroke-linecap="round"/>
+<path d="M300 344V182C300 164 320 164 320 182V272" fill="none" stroke="#0f1620" stroke-width="12" stroke-linecap="round"/>
+<path d="M342 338V196C342 178 362 178 362 196V282" fill="none" stroke="#0f1620" stroke-width="12" stroke-linecap="round"/>
+<path d="M384 324V236C384 220 402 220 402 236V292" fill="none" stroke="#0f1620" stroke-width="12" stroke-linecap="round"/>
+<circle cx="222" cy="228" r="18" fill="none" stroke="#0f1620" stroke-width="10"/>
+<circle cx="222" cy="228" r="5" fill="#0f1620"/>
 </svg>

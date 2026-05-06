@@ -1,16 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
-  <title>Espejo</title>
-  <desc>Sello solar Espejo</desc>
-  <defs>
-    <radialGradient id="bg" cx="28%" cy="24%">
-      <stop offset="0%" stop-color="#fffaf5"/>
-      <stop offset="100%" stop-color="#d9d1c7"/>
-    </radialGradient>
-  </defs>
-  <rect width="640" height="640" rx="120" fill="url(#bg)"/>
-  <rect x="32" y="32" width="576" height="576" rx="96" fill="none" stroke="#8a7462" stroke-width="5" opacity="0.78"/>
-  <circle cx="320" cy="286" r="198" fill="none" stroke="#8a7462" stroke-width="4" opacity="0.55"/>
-  <circle cx="320" cy="286" r="230" fill="none" stroke="#8a7462" stroke-width="2.5" opacity="0.24" stroke-dasharray="5 18"/>
-  <rect x="238" y="156" width="164" height="240" rx="54" fill="none" stroke="#2f241d" stroke-width="12"/><path d="M270 208H370" stroke="#8a7462" stroke-width="8" stroke-linecap="round"/><path d="M270 264H370" stroke="#8a7462" stroke-width="8" stroke-linecap="round"/><path d="M270 320H370" stroke="#8a7462" stroke-width="8" stroke-linecap="round"/>
-  <text x="320" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#2f241d" letter-spacing="4">ESPEJO</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Mirror">
+<defs>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#d8cdc0" flood-opacity="0.28"/>
+  </filter>
+</defs>
+<g filter="url(#shadow)">
+  <rect x="76" y="76" width="360" height="360" rx="56" fill="#fffaf3"/>
+</g>
+<rect x="76" y="76" width="360" height="360" rx="56" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="6"/>
+<path d="M216 178H304V214H392V356H304V392H216Z" fill="none" stroke="#1f1714" stroke-width="11" stroke-linejoin="round"/>
+<path d="M216 178V392" stroke="#1f1714" stroke-width="11"/>
+<path d="M304 178V214" stroke="#1f1714" stroke-width="11"/>
+<path d="M304 356V392" stroke="#1f1714" stroke-width="11"/>
+<path d="M392 214V356" stroke="#1f1714" stroke-width="11"/>
+<path d="M244 286H364" stroke="#1f1714" stroke-width="10" stroke-linecap="round"/>
 </svg>

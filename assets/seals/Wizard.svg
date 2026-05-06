@@ -1,16 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
-  <title>Mago</title>
-  <desc>Sello solar Mago</desc>
-  <defs>
-    <radialGradient id="bg" cx="28%" cy="24%">
-      <stop offset="0%" stop-color="#fffaf5"/>
-      <stop offset="100%" stop-color="#d9d1c7"/>
-    </radialGradient>
-  </defs>
-  <rect width="640" height="640" rx="120" fill="url(#bg)"/>
-  <rect x="32" y="32" width="576" height="576" rx="96" fill="none" stroke="#8a7462" stroke-width="5" opacity="0.78"/>
-  <circle cx="320" cy="286" r="198" fill="none" stroke="#8a7462" stroke-width="4" opacity="0.55"/>
-  <circle cx="320" cy="286" r="230" fill="none" stroke="#8a7462" stroke-width="2.5" opacity="0.24" stroke-dasharray="5 18"/>
-  <circle cx="320" cy="286" r="108" fill="none" stroke="#2f241d" stroke-width="12"/><path d="M320 186C378 224 404 270 404 296C404 322 378 368 320 406C262 368 236 322 236 296C236 270 262 224 320 186Z" fill="none" stroke="#8a7462" stroke-width="8"/>
-  <text x="320" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#2f241d" letter-spacing="4">MAGO</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Wizard">
+<defs>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#d8cdc0" flood-opacity="0.28"/>
+  </filter>
+</defs>
+<g filter="url(#shadow)">
+  <rect x="76" y="76" width="360" height="360" rx="56" fill="#fffaf3"/>
+</g>
+<rect x="76" y="76" width="360" height="360" rx="56" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="6"/>
+<path d="M228 188C244 172 262 164 284 164C304 164 320 170 334 184" fill="none" stroke="#1f1714" stroke-width="11" stroke-linecap="round"/>
+<path d="M354 184C366 170 382 164 402 164C424 164 442 172 458 188" fill="none" stroke="#1f1714" stroke-width="11" stroke-linecap="round"/>
+<path d="M246 222C260 242 278 252 300 252C322 252 340 242 354 222" fill="none" stroke="#1f1714" stroke-width="11" stroke-linecap="round"/>
+<path d="M354 222C368 242 386 252 408 252C430 252 448 242 462 222" fill="none" stroke="#1f1714" stroke-width="11" stroke-linecap="round"/>
+<path d="M306 252V348" stroke="#1f1714" stroke-width="11" stroke-linecap="round"/>
+<path d="M402 252V348" stroke="#1f1714" stroke-width="11" stroke-linecap="round"/>
+<circle cx="334" cy="176" r="7" fill="#1f1714"/><circle cx="374" cy="176" r="7" fill="#1f1714"/>
 </svg>
