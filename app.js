@@ -154,6 +154,7 @@ const KIN_IMAGE_BASE_PATH = APP_CONFIG.kinImageBasePath || "";
 const KIN_IMAGES = APP_CONFIG.kinImages || {};
 
 const form = document.querySelector("#kin-form");
+const kinNumberForm = document.querySelector("#kin-number-form");
 const resultCard = document.querySelector("#result-card");
 const resultTitle = document.querySelector("#result-title");
 const resultSummary = document.querySelector("#result-summary");
@@ -173,6 +174,7 @@ const waveTitle = document.querySelector("#wave-title");
 const waveCopy = document.querySelector("#wave-copy");
 const oracleGuide = document.querySelector("#oracle-guide");
 const oracleAnalog = document.querySelector("#oracle-analog");
+const oracleDestiny = document.querySelector("#oracle-destiny");
 const oracleAntipode = document.querySelector("#oracle-antipode");
 const oracleOccult = document.querySelector("#oracle-occult");
 const oracleCopy = document.querySelector("#oracle-copy");
@@ -315,6 +317,132 @@ function resolveKinImage(kinNumber) {
   return "";
 }
 
+function renderSealGlyph(seal, palette) {
+  const stroke = palette.text;
+  const accent = palette.accent;
+  const soft = palette.accent;
+
+  switch (seal.name) {
+    case "Dragon":
+      return `
+        <circle cx="100" cy="100" r="34" fill="none" stroke="${stroke}" stroke-width="3.2" />
+        <circle cx="100" cy="100" r="18" fill="none" stroke="${soft}" stroke-width="2.2" />
+        <circle cx="100" cy="100" r="6" fill="${accent}" />
+      `;
+    case "Wind":
+      return `
+        <path d="M56 112C72 94 96 94 114 106C126 114 136 114 146 104" fill="none" stroke="${stroke}" stroke-width="4" stroke-linecap="round"/>
+        <path d="M62 90C76 76 96 76 110 84C118 88 126 88 134 82" fill="none" stroke="${soft}" stroke-width="3" stroke-linecap="round"/>
+      `;
+    case "Night":
+      return `
+        <path d="M112 64C96 78 90 100 96 120C102 138 116 150 136 154C122 164 102 168 86 160C62 148 52 120 60 96C68 76 88 62 112 64Z" fill="${stroke}" opacity="0.92"/>
+        <circle cx="122" cy="92" r="8" fill="${accent}" />
+      `;
+    case "Seed":
+      return `
+        <path d="M100 58C122 72 136 98 134 122C132 142 118 156 100 162C82 156 68 142 66 122C64 98 78 72 100 58Z" fill="none" stroke="${stroke}" stroke-width="3.4"/>
+        <path d="M100 70V150" stroke="${soft}" stroke-width="2.6" stroke-linecap="round"/>
+      `;
+    case "Serpent":
+      return `
+        <path d="M86 62C112 62 130 76 130 94C130 112 108 116 92 126C78 134 74 142 74 150C74 158 80 164 92 164C106 164 116 158 124 148" fill="none" stroke="${stroke}" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="126" cy="146" r="5.5" fill="${accent}" />
+      `;
+    case "Worldbridger":
+      return `
+        <circle cx="76" cy="100" r="18" fill="none" stroke="${stroke}" stroke-width="3"/>
+        <circle cx="124" cy="100" r="18" fill="none" stroke="${stroke}" stroke-width="3"/>
+        <path d="M94 100H106" stroke="${soft}" stroke-width="4" stroke-linecap="round"/>
+      `;
+    case "Hand":
+      return `
+        <path d="M80 148V92C80 86 88 84 90 90V118" fill="none" stroke="${stroke}" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M94 146V82C94 74 104 74 104 82V116" fill="none" stroke="${stroke}" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M108 144V88C108 80 118 80 118 88V120" fill="none" stroke="${stroke}" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M122 140V98C122 90 132 90 132 98V124" fill="none" stroke="${stroke}" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M80 146C88 154 96 158 106 158C118 158 128 154 136 146" fill="none" stroke="${soft}" stroke-width="2.4" stroke-linecap="round"/>
+      `;
+    case "Star":
+      return `
+        <path d="M100 62L108 88L136 88L114 104L122 132L100 116L78 132L86 104L64 88L92 88Z" fill="none" stroke="${stroke}" stroke-width="3.2" stroke-linejoin="round"/>
+      `;
+    case "Moon":
+      return `
+        <path d="M100 58C126 74 140 96 140 118C140 138 126 154 100 164C74 154 60 138 60 118C60 96 74 74 100 58Z" fill="none" stroke="${stroke}" stroke-width="3.2"/>
+        <path d="M100 74V148" stroke="${soft}" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M72 112C86 122 114 122 128 112" stroke="${soft}" stroke-width="2.4" stroke-linecap="round"/>
+      `;
+    case "Dog":
+      return `
+        <path d="M72 124C72 98 84 78 100 70C116 78 128 98 128 124C128 140 116 154 100 160C84 154 72 140 72 124Z" fill="none" stroke="${stroke}" stroke-width="3.2"/>
+        <path d="M86 90L76 76" stroke="${soft}" stroke-width="3" stroke-linecap="round"/>
+        <path d="M114 90L124 76" stroke="${soft}" stroke-width="3" stroke-linecap="round"/>
+      `;
+    case "Monkey":
+      return `
+        <circle cx="100" cy="98" r="26" fill="none" stroke="${stroke}" stroke-width="3.2" />
+        <circle cx="74" cy="90" r="12" fill="none" stroke="${soft}" stroke-width="2.4" />
+        <circle cx="126" cy="90" r="12" fill="none" stroke="${soft}" stroke-width="2.4" />
+        <path d="M88 118C94 124 106 124 112 118" stroke="${soft}" stroke-width="2.6" stroke-linecap="round"/>
+      `;
+    case "Human":
+      return `
+        <circle cx="100" cy="72" r="10" fill="${accent}" />
+        <path d="M100 84V144" stroke="${stroke}" stroke-width="3.4" stroke-linecap="round"/>
+        <path d="M76 102H124" stroke="${stroke}" stroke-width="3.4" stroke-linecap="round"/>
+        <path d="M84 160L100 140L116 160" fill="none" stroke="${soft}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      `;
+    case "Skywalker":
+      return `
+        <path d="M100 58V144" stroke="${stroke}" stroke-width="3.4" stroke-linecap="round"/>
+        <path d="M74 86L100 60L126 86" fill="none" stroke="${soft}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M74 132L100 158L126 132" fill="none" stroke="${soft}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      `;
+    case "Wizard":
+      return `
+        <circle cx="100" cy="100" r="34" fill="none" stroke="${stroke}" stroke-width="3.2" />
+        <path d="M100 66C118 78 126 92 126 100C126 108 118 122 100 134C82 122 74 108 74 100C74 92 82 78 100 66Z" fill="none" stroke="${soft}" stroke-width="2.4"/>
+      `;
+    case "Eagle":
+      return `
+        <path d="M62 118C76 96 90 84 100 82C110 84 124 96 138 118" fill="none" stroke="${stroke}" stroke-width="4" stroke-linecap="round"/>
+        <path d="M74 118C84 130 92 136 100 138C108 136 116 130 126 118" fill="none" stroke="${soft}" stroke-width="3" stroke-linecap="round"/>
+      `;
+    case "Warrior":
+      return `
+        <polygon points="100,62 132,88 120,138 80,138 68,88" fill="none" stroke="${stroke}" stroke-width="3.2" stroke-linejoin="round"/>
+        <circle cx="100" cy="102" r="10" fill="none" stroke="${soft}" stroke-width="2.4" />
+      `;
+    case "Earth":
+      return `
+        <circle cx="100" cy="100" r="34" fill="none" stroke="${stroke}" stroke-width="3.2" />
+        <path d="M66 100H134" stroke="${soft}" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M100 66V134" stroke="${soft}" stroke-width="2.6" stroke-linecap="round"/>
+        <circle cx="100" cy="100" r="6" fill="${accent}" />
+      `;
+    case "Mirror":
+      return `
+        <rect x="74" y="62" width="52" height="76" rx="18" fill="none" stroke="${stroke}" stroke-width="3.2"/>
+        <path d="M84 78H116" stroke="${soft}" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M84 96H116" stroke="${soft}" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M84 114H116" stroke="${soft}" stroke-width="2.4" stroke-linecap="round"/>
+      `;
+    case "Storm":
+      return `
+        <path d="M110 60L78 110H102L90 144L122 96H98Z" fill="none" stroke="${stroke}" stroke-width="3.4" stroke-linejoin="round"/>
+        <circle cx="130" cy="78" r="6" fill="${accent}" />
+      `;
+    case "Sun":
+      return `
+        <circle cx="100" cy="100" r="24" fill="none" stroke="${stroke}" stroke-width="3.2" />
+        <path d="M100 56V72M100 128V144M56 100H72M128 100H144M72 72L82 82M118 118L128 128M72 128L82 118M118 82L128 72" stroke="${soft}" stroke-width="3" stroke-linecap="round"/>
+      `;
+    default:
+      return `<circle cx="100" cy="100" r="30" fill="none" stroke="${stroke}" stroke-width="3.2" />`;
+  }
+}
+
 function buildKinSvg(kinNumber, seal, toneDisplay) {
   const palette = COLOR_PALETTE[seal.color] || COLOR_PALETTE.Rojo;
   const orbitCount = positiveModulo(kinNumber - 1, 13) + 1;
@@ -324,6 +452,7 @@ function buildKinSvg(kinNumber, seal, toneDisplay) {
     const y = 100 + Math.sin(angle) * 64;
     return `<circle cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" r="4.4" fill="${palette.accent}" opacity="0.9" />`;
   }).join("");
+  const glyph = renderSealGlyph(seal, palette);
 
   const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Kin ${kinNumber}">
@@ -333,13 +462,15 @@ function buildKinSvg(kinNumber, seal, toneDisplay) {
           <stop offset="100%" stop-color="${palette.fill}" />
         </radialGradient>
       </defs>
-      <rect width="200" height="200" rx="100" fill="url(#glow)" />
-      <circle cx="100" cy="100" r="82" fill="none" stroke="${palette.accent}" stroke-width="1.2" opacity="0.7" />
-      <circle cx="100" cy="100" r="66" fill="none" stroke="${palette.accent}" stroke-width="0.8" opacity="0.5" />
+      <rect width="200" height="200" rx="38" fill="url(#glow)" />
+      <rect x="12" y="12" width="176" height="176" rx="30" fill="none" stroke="${palette.accent}" stroke-width="1.2" opacity="0.7" />
+      <circle cx="100" cy="92" r="64" fill="none" stroke="${palette.accent}" stroke-width="0.9" opacity="0.5" />
       ${dots}
-      <text x="100" y="92" text-anchor="middle" font-family="Georgia, serif" font-size="38" fill="${palette.text}">${kinNumber}</text>
-      <text x="100" y="118" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" letter-spacing="2" fill="${palette.text}">${seal.nameEs.toUpperCase()}</text>
-      <text x="100" y="138" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" letter-spacing="1.6" fill="${palette.text}">${toneDisplay.toUpperCase()}</text>
+      <g transform="translate(0 -4)">
+        ${glyph}
+      </g>
+      <text x="100" y="156" text-anchor="middle" font-family="Georgia, serif" font-size="27" fill="${palette.text}">Kin ${kinNumber}</text>
+      <text x="100" y="174" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" letter-spacing="1.8" fill="${palette.text}">${seal.nameEs.toUpperCase()} · ${toneDisplay.toUpperCase()}</text>
     </svg>
   `.trim();
 
@@ -375,19 +506,27 @@ function updateShopLink(seal) {
 function buildReading(seal, tone) {
   const toneDisplay = getToneDisplayName(tone, seal);
 
-  return `Tu firma ${seal.nameEs} ${toneDisplay} ${getColorDisplayName(seal)} porta una energia que puede invitarte a ${seal.lifeAction} desde una escucha mas consciente de ${seal.essence.toLowerCase()}. Es una frecuencia que puede ayudarte a reconocer, en tu propio camino, la medicina de ${seal.power.toLowerCase()} que habita en ti.`;
+  return `Tu firma ${seal.nameEs} ${toneDisplay} ${getColorDisplayName(seal)} abre una frecuencia que puede acercarte a ${seal.lifeAction} desde una escucha mas consciente de ${seal.essence.toLowerCase()}. En vez de definirte de forma rigida, esta energia puede ayudarte a reconocer la medicina de ${seal.power.toLowerCase()} que busca expresarse en tu camino.`;
+}
+
+function buildSummary(displayName, seal, tone) {
+  if (displayName === "Tu firma") {
+    return `Esta firma galactica une el sello ${seal.nameEs} con el tono ${tone.name} y abre una primera clave para comprender la frecuencia que acompana tu camino.`;
+  }
+
+  return `${displayName}, tu firma galactica une el sello ${seal.nameEs} con el tono ${tone.name} y abre una primera clave para comprender la frecuencia que acompana tu camino.`;
 }
 
 function buildGuidance(seal, tone) {
-  return `En la vida cotidiana, esta combinacion puede mostrarte como habitas tus vinculos, tus decisiones y tu ritmo interno. Tu kin no te encierra: te orienta. Puede ayudarte a escucharte con mas suavidad y a dar pasos mas alineados con lo que hoy esta queriendo abrirse en ti.`;
+  return `En la vida cotidiana, esta combinacion puede mostrarte como atraviesas tus vinculos, tus decisiones y tu ritmo interno. Tu kin no te encierra: puede servirte como una guia suave para escucharte mejor y elegir con mas presencia aquello que hoy quiere abrirse en ti.`;
 }
 
 function buildWaveCopy(waveSeal) {
-  return `Tu Onda Encantada nace en ${waveSeal.nameEs} y puede leerse como el portal evolutivo desde el cual tu kin comienza su recorrido. Esta capa muestra el gran aprendizaje de fondo que acompana tu proceso y la direccion mas amplia de tu camino.`;
+  return `Tu Onda Encantada nace en ${waveSeal.nameEs} y habla del recorrido mas amplio que sostiene tu aprendizaje. Esta secuencia muestra de que manera tu energia madura paso a paso y cual es el gran clima evolutivo que acompana tu proceso.`;
 }
 
 function buildOracleCopy(oracle) {
-  return `Tu oraculo muestra una trama de apoyo y aprendizaje: ${oracle.guide.seal.nameEs} aparece como energia guia, ${oracle.analog.seal.nameEs} como resonancia afectiva, ${oracle.antipode.seal.nameEs} como desafio evolutivo y ${oracle.occult.seal.nameEs} como medicina escondida que madura en silencio.`;
+  return `Tu oraculo dibuja una trama viva de compania y aprendizaje. ${oracle.guide.seal.nameEs} puede mostrar el tono de tu guia, ${oracle.analog.seal.nameEs} aquello que fluye con mayor afinidad, ${oracle.antipode.seal.nameEs} el desafio que impulsa crecimiento y ${oracle.occult.seal.nameEs} la medicina silenciosa que se revela con el tiempo.`;
 }
 
 function updateSessionLinks(seal, tone, kinNumber) {
@@ -399,16 +538,14 @@ function updateSessionLinks(seal, tone, kinNumber) {
   sessionInfoLink.href = SESSION_PAGE_URL;
 }
 
-function updateResult(name, dateString) {
-  const { kinNumber, tone, seal } = calculateKin(dateString);
-  const displayName = name.trim() || "Tu firma";
+function renderResult(displayName, kinNumber, tone, seal) {
   const toneDisplay = getToneDisplayName(tone, seal);
   const colorDisplay = getColorDisplayName(seal);
   const wave = getWaveData(kinNumber, tone);
   const oracle = buildOracleData(kinNumber, seal, tone);
 
   resultTitle.textContent = `Kin ${kinNumber}: ${seal.nameEs} ${toneDisplay} ${colorDisplay}`;
-  resultSummary.textContent = `${displayName}, tu firma galactica une el sello ${seal.nameEs} con el tono ${tone.name} y abre una primera clave para comprender la energia que acompana tu camino.`;
+  resultSummary.textContent = buildSummary(displayName, seal, tone);
   updateKinImage(kinNumber, seal, toneDisplay);
   emblemKin.textContent = kinNumber;
   emblemSeal.textContent = `${seal.nameEs} ${toneDisplay}`;
@@ -417,12 +554,13 @@ function updateResult(name, dateString) {
   resultSeal.textContent = seal.nameEs;
   resultColor.textContent = seal.color;
   resultCopy.textContent = buildReading(seal, tone);
-  resultSealMeta.textContent = `El sello de ${seal.nameEs} trae consigo el poder de ${seal.power.toLowerCase()}, la accion de ${seal.lifeAction} y la esencia de ${seal.essence.toLowerCase()}. ${seal.nameEs} ${seal.phrase}, afinando tu percepcion y haciendo visible una cualidad profunda de tu energia natal.`;
-  resultToneMeta.textContent = `El tono ${tone.name} le da a esta energia ${TONE_PULSES[tone.name] || "un pulso singular"}. Puede mostrar la capacidad de ${TONE_ACTION_EXPRESSIONS[tone.name] || (TONE_INFINITIVES[tone.action] || tone.action.toLowerCase())}. ${capitalize(tone.phrase)} y sugiere la manera en que tu energia busca tomar forma en la vida.`;
-  resultColorMeta.textContent = `En la secuencia de colores, el ${seal.color.toLowerCase()} ${COLOR_MEANINGS[seal.color]}. Esto puede señalar una energia vinculada al comienzo, al impulso y al movimiento que hoy quiere abrirse paso en tu proceso.`;
+  resultSealMeta.textContent = `El sello de ${seal.nameEs} trae el poder de ${seal.power.toLowerCase()}, la accion de ${seal.lifeAction} y la esencia de ${seal.essence.toLowerCase()}. En su frecuencia, ${seal.phrase}, dejando ver una cualidad profunda de tu energia natal.`;
+  resultToneMeta.textContent = `El tono ${tone.name} le da a esta energia ${TONE_PULSES[tone.name] || "un pulso singular"}. Puede expresar la capacidad de ${TONE_ACTION_EXPRESSIONS[tone.name] || (TONE_INFINITIVES[tone.action] || tone.action.toLowerCase())}. ${capitalize(tone.phrase)} y muestra como esta fuerza busca encarnarse en tu vida.`;
+  resultColorMeta.textContent = `En la secuencia de colores, el ${seal.color.toLowerCase()} ${COLOR_MEANINGS[seal.color]}. Esta capa puede sentirse como una invitacion al movimiento, a la apertura y al modo en que tu energia entra en proceso.`;
   resultGuidance.textContent = buildGuidance(seal, tone);
   waveTitle.textContent = `Onda encantada de ${wave.waveSeal.nameEs}`;
-  waveCopy.textContent = buildWaveCopy(wave.waveSeal);
+  waveCopy.textContent = `${buildWaveCopy(wave.waveSeal)} Comienza en el Kin ${wave.waveStartKin}, que marca el punto de partida de esta secuencia.`;
+  oracleDestiny.textContent = `Kin ${kinNumber}: ${seal.nameEs}`;
   oracleGuide.textContent = `Kin ${oracle.guide.kinNumber}: ${oracle.guide.seal.nameEs}`;
   oracleAnalog.textContent = `Kin ${oracle.analog.kinNumber}: ${oracle.analog.seal.nameEs}`;
   oracleAntipode.textContent = `Kin ${oracle.antipode.kinNumber}: ${oracle.antipode.seal.nameEs}`;
@@ -432,6 +570,13 @@ function updateResult(name, dateString) {
   updateSessionLinks(seal, tone, kinNumber);
 
   resultCard.hidden = false;
+}
+
+function updateResult(name, dateString) {
+  const { kinNumber, tone, seal } = calculateKin(dateString);
+  const displayName = name.trim() || "Tu firma";
+
+  renderResult(displayName, kinNumber, tone, seal);
 }
 
 form.addEventListener("submit", (event) => {
@@ -446,4 +591,17 @@ form.addEventListener("submit", (event) => {
   }
 
   updateResult(name, birthdate);
+});
+
+kinNumberForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const kinNumber = Number(kinNumberForm.querySelector("#kin-number").value);
+
+  if (!kinNumber || kinNumber < 1 || kinNumber > 260) {
+    return;
+  }
+
+  const { tone, seal } = getKinData(kinNumber);
+  renderResult("Tu firma", kinNumber, tone, seal);
 });

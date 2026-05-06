@@ -19,11 +19,17 @@
   <body>
     <main class="page">
       <section class="hero">
-        <p class="eyebrow">Rox Experiences</p>
+        <div class="hero-brand">
+          <img class="brand-mark" src="./assets/brand/logo-vertical-negro.svg" alt="Rox Experiences" />
+          <div class="hero-brand-copy">
+            <p class="eyebrow">Rox Experiences</p>
+            <p class="hero-note">Sincronario maya, lectura simbolica y experiencia ritual</p>
+          </div>
+        </div>
         <h1>Calcula tu kin galáctico</h1>
         <p class="intro">
-          Descubre tu kin dentro de la matriz de 260 kines y recibe una primera lectura para
-          comenzar a comprender la energia que acompana tu camino.
+          Descubre tu firma galactica dentro de la matriz de 260 kines y recibe una primera
+          lectura para comenzar a comprender la frecuencia que acompana tu camino.
         </p>
       </section>
 
@@ -44,6 +50,23 @@
             <button type="submit">Calcular mi kin</button>
           </form>
 
+          <div class="form-divider" aria-hidden="true"></div>
+
+          <form id="kin-number-form" class="form secondary-form">
+            <h3 class="form-subtitle">Si ya conoces tu kin</h3>
+            <label for="kin-number">Numero de kin</label>
+            <input
+              id="kin-number"
+              name="kin-number"
+              type="number"
+              min="1"
+              max="260"
+              placeholder="Ejemplo: 169"
+            />
+
+            <button type="submit" class="ghost-button">Ver informacion de mi kin</button>
+          </form>
+
           <p class="note">
             Este calculo se realiza a partir de la tabla anual, la tabla mensual y tu dia de
             nacimiento, siguiendo la logica tradicional del Tzolkin.
@@ -51,42 +74,51 @@
         </article>
 
         <article class="card result-card" id="result-card" hidden>
-          <p class="result-kicker">Resultado</p>
-          <h2 id="result-title">Kin</h2>
-          <p id="result-summary" class="result-summary"></p>
+          <div class="result-header">
+            <div class="kin-visual-panel">
+              <p class="panel-label">Escudo de tu frecuencia</p>
+              <div class="kin-emblem" aria-hidden="true">
+                <div class="kin-emblem-inner">
+                  <img id="kin-image" class="kin-image" alt="" hidden />
+                  <span id="emblem-kin" class="kin-emblem-number"></span>
+                  <span id="emblem-seal" class="kin-emblem-seal"></span>
+                </div>
+              </div>
+            </div>
 
-          <div class="kin-emblem" aria-hidden="true">
-            <div class="kin-emblem-inner">
-              <img id="kin-image" class="kin-image" alt="" hidden />
-              <span id="emblem-kin" class="kin-emblem-number"></span>
-              <span id="emblem-seal" class="kin-emblem-seal"></span>
+            <div class="kin-content-panel">
+              <p class="result-kicker">Resultado</p>
+              <h2 id="result-title">Kin</h2>
+              <p id="result-summary" class="result-summary"></p>
+
+              <dl class="result-grid">
+                <div>
+                  <dt>Número</dt>
+                  <dd id="result-kin"></dd>
+                </div>
+                <div>
+                  <dt>Tono</dt>
+                  <dd id="result-tone"></dd>
+                </div>
+                <div>
+                  <dt>Sello</dt>
+                  <dd id="result-seal"></dd>
+                </div>
+                <div>
+                  <dt>Color</dt>
+                  <dd id="result-color"></dd>
+                </div>
+              </dl>
             </div>
           </div>
 
-          <dl class="result-grid">
-            <div>
-              <dt>Número</dt>
-              <dd id="result-kin"></dd>
-            </div>
-            <div>
-              <dt>Tono</dt>
-              <dd id="result-tone"></dd>
-            </div>
-            <div>
-              <dt>Sello</dt>
-              <dd id="result-seal"></dd>
-            </div>
-            <div>
-              <dt>Color</dt>
-              <dd id="result-color"></dd>
-            </div>
-          </dl>
-
-          <p id="result-copy" class="result-copy"></p>
-          <p id="result-seal-meta" class="result-detail"></p>
-          <p id="result-tone-meta" class="result-detail"></p>
-          <p id="result-color-meta" class="result-detail"></p>
-          <p id="result-guidance" class="result-guidance"></p>
+          <div class="reading-flow">
+            <p id="result-copy" class="result-copy"></p>
+            <p id="result-seal-meta" class="result-detail"></p>
+            <p id="result-tone-meta" class="result-detail"></p>
+            <p id="result-color-meta" class="result-detail"></p>
+            <p id="result-guidance" class="result-guidance"></p>
+          </div>
 
           <div class="insight-sections">
             <section class="insight-block">
@@ -97,22 +129,26 @@
 
             <section class="insight-block">
               <p class="insight-label">Oraculo de quinta fuerza</p>
-              <div class="oracle-grid">
-                <div>
-                  <dt>Guia</dt>
-                  <dd id="oracle-guide"></dd>
+              <div class="oracle-cross">
+                <div class="oracle-node oracle-guide">
+                  <span class="oracle-node-label">Guia</span>
+                  <span id="oracle-guide" class="oracle-node-value"></span>
                 </div>
-                <div>
-                  <dt>Analogo</dt>
-                  <dd id="oracle-analog"></dd>
+                <div class="oracle-node oracle-analog">
+                  <span class="oracle-node-label">Analogo</span>
+                  <span id="oracle-analog" class="oracle-node-value"></span>
                 </div>
-                <div>
-                  <dt>Antipoda</dt>
-                  <dd id="oracle-antipode"></dd>
+                <div class="oracle-node oracle-destiny">
+                  <span class="oracle-node-label">Destino</span>
+                  <span id="oracle-destiny" class="oracle-node-value"></span>
                 </div>
-                <div>
-                  <dt>Oculto</dt>
-                  <dd id="oracle-occult"></dd>
+                <div class="oracle-node oracle-antipode">
+                  <span class="oracle-node-label">Antipoda</span>
+                  <span id="oracle-antipode" class="oracle-node-value"></span>
+                </div>
+                <div class="oracle-node oracle-occult">
+                  <span class="oracle-node-label">Oculto</span>
+                  <span id="oracle-occult" class="oracle-node-value"></span>
                 </div>
               </div>
               <p id="oracle-copy" class="insight-copy"></p>
@@ -134,19 +170,33 @@
       </section>
 
       <section class="card steps">
-        <h2>Un portal para seguir profundizando</h2>
-        <ol>
-          <li>Descubres tu firma galactica y recibes una primera lectura de tu energia.</li>
-          <li>Puedes ir a la sesion personalizada para profundizar tu camino con Rox.</li>
-          <li>Tambien puedes explorar productos, rituales o colecciones afines a tu energia.</li>
-        </ol>
+        <h2>Que vas a descubrir en tu lectura</h2>
+        <div class="feature-grid">
+          <article class="feature-item">
+            <p class="feature-kicker">Firma central</p>
+            <p class="feature-copy">
+              Tu kin une sello, tono y color para mostrar la frecuencia base con la que llegas a
+              esta experiencia.
+            </p>
+          </article>
+          <article class="feature-item">
+            <p class="feature-kicker">Onda encantada</p>
+            <p class="feature-copy">
+              La onda muestra el camino evolutivo que sostiene tu proceso y la secuencia donde tu
+              energia madura.
+            </p>
+          </article>
+          <article class="feature-item">
+            <p class="feature-kicker">Oraculo</p>
+            <p class="feature-copy">
+              La cruz de quinta fuerza revela apoyos, resonancias, desafios y dones mas sutiles de
+              tu mapa.
+            </p>
+          </article>
+        </div>
         <p class="note">
-          El archivo <code>config.js</code> ya quedó apuntando a <code>rox-experiences.com</code> y
-          puede enlazar cada sello con una categoria, producto o coleccion concreta.
-        </p>
-        <p class="note">
-          Tambien quedo conectado con tu pagina de Sincronario y con un enlace directo a WhatsApp
-          para reservar la sesion de interpretacion personal.
+          Esta base ya quedo lista para conectar tu resultado con sesiones, rituales, productos o
+          colecciones especiales dentro de Rox Experiences.
         </p>
       </section>
     </main>
