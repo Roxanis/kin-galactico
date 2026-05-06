@@ -152,6 +152,7 @@ const SESSION_BOOKING_URL =
   APP_CONFIG.sessionBookingUrl || "https://wa.me/541169047724";
 const KIN_IMAGE_BASE_PATH = APP_CONFIG.kinImageBasePath || "";
 const SEAL_IMAGE_BASE_PATH = APP_CONFIG.sealImageBasePath || "./assets/seals";
+const SEAL_IMAGES = APP_CONFIG.sealImages || {};
 const KIN_IMAGES = APP_CONFIG.kinImages || {};
 
 const form = document.querySelector("#kin-form");
@@ -308,6 +309,10 @@ function resolveShopUrl(seal) {
 function resolveKinImage(kinNumber, seal) {
   if (KIN_IMAGES[kinNumber]) {
     return KIN_IMAGES[kinNumber];
+  }
+
+  if (seal?.name && SEAL_IMAGES[seal.name]) {
+    return SEAL_IMAGES[seal.name];
   }
 
   if (KIN_IMAGE_BASE_PATH) {
