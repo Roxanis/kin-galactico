@@ -309,6 +309,56 @@ button:hover,
   border-radius: 32px;
 }
 
+.kin-emblem-tone {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  display: inline-grid;
+  place-items: center;
+  min-width: 88px;
+  min-height: 46px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  background: rgba(255, 251, 246, 0.92);
+  box-shadow: 0 12px 28px rgba(28, 18, 12, 0.14);
+  transform: translateX(-50%);
+}
+
+.tone-glyph,
+.tone-dots,
+.tone-bars {
+  display: grid;
+  justify-items: center;
+}
+
+.tone-glyph {
+  gap: 4px;
+}
+
+.tone-dots {
+  grid-auto-flow: column;
+  gap: 5px;
+}
+
+.tone-bars {
+  gap: 4px;
+}
+
+.tone-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--text);
+}
+
+.tone-bar {
+  width: 42px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--text);
+}
+
 .kin-emblem-number {
   position: absolute;
   right: 16px;
@@ -332,11 +382,11 @@ button:hover,
 .kin-emblem-seal {
   position: absolute;
   left: 16px;
-  top: 16px;
+  bottom: 16px;
   display: inline-flex;
   align-items: center;
   min-height: 34px;
-  max-width: calc(100% - 90px);
+  max-width: calc(100% - 96px);
   padding: 6px 12px;
   border-radius: 999px;
   background: rgba(255, 251, 246, 0.9);

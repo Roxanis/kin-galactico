@@ -161,6 +161,7 @@ const resultCard = document.querySelector("#result-card");
 const resultTitle = document.querySelector("#result-title");
 const resultSummary = document.querySelector("#result-summary");
 const kinImage = document.querySelector("#kin-image");
+const emblemTone = document.querySelector("#emblem-tone");
 const emblemKin = document.querySelector("#emblem-kin");
 const emblemSeal = document.querySelector("#emblem-seal");
 const resultKin = document.querySelector("#result-kin");
@@ -200,6 +201,21 @@ function getYearValue(year) {
 
 function getToneDisplayName(tone, seal) {
   return TONE_ADJECTIVES[tone.name]?.[seal.gender] || tone.name;
+}
+
+function buildToneGlyph(toneNumber) {
+  const bars = Math.floor(toneNumber / 5);
+  const dots = toneNumber % 5;
+
+  const dotMarkup = Array.from({ length: dots }, () => '<span class="tone-dot"></span>').join("");
+  const barMarkup = Array.from({ length: bars }, () => '<span class="tone-bar"></span>').join("");
+
+  return `
+    <span class="tone-glyph" aria-label="Tono ${toneNumber}">
+      ${dotMarkup ? `<span class="tone-dots">${dotMarkup}</span>` : ""}
+      ${barMarkup ? `<span class="tone-bars">${barMarkup}</span>` : ""}
+    </span>
+  `;
 }
 
 function getColorDisplayName(seal) {
@@ -555,8 +571,9 @@ function renderResult(displayName, kinNumber, tone, seal) {
   resultTitle.textContent = `Kin ${kinNumber}: ${seal.nameEs} ${toneDisplay} ${colorDisplay}`;
   resultSummary.textContent = buildSummary(displayName, seal, tone);
   updateKinImage(kinNumber, seal, toneDisplay);
+  emblemTone.innerHTML = buildToneGlyph(toneIndexFromName(tone.name) + 1);
   emblemKin.textContent = kinNumber;
-  emblemSeal.textContent = `${seal.nameEs} ${toneDisplay}`;
+  emblemSeal.textContent = seal.nameEs;
   resultKin.textContent = `Kin ${kinNumber}`;
   resultTone.textContent = tone.name;
   resultSeal.textContent = seal.nameEs;
