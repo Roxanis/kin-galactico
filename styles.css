@@ -281,6 +281,7 @@ button:hover,
   display: grid;
   place-items: center;
   margin: 0;
+  padding-top: 38px;
 }
 
 .kin-emblem-inner {
@@ -297,7 +298,7 @@ button:hover,
   box-shadow:
     inset 0 0 0 10px rgba(255, 255, 255, 0.34),
     0 22px 48px rgba(88, 54, 33, 0.14);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .kin-image {
@@ -311,7 +312,7 @@ button:hover,
 
 .kin-emblem-tone {
   position: absolute;
-  top: 14px;
+  top: -40px;
   left: 50%;
   display: inline-grid;
   place-items: center;
