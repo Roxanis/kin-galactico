@@ -96,6 +96,10 @@ h2 {
   font-size: clamp(2.2rem, 4vw, 3rem);
 }
 
+#result-title {
+  font-size: clamp(3.1rem, 5.2vw, 4.7rem);
+}
+
 .intro,
 .supporting,
 .note,
@@ -137,6 +141,7 @@ ol {
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
   gap: 24px;
   margin-bottom: 24px;
 }
@@ -250,8 +255,8 @@ button:hover,
 
 .result-header {
   display: grid;
-  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
-  gap: 24px;
+  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+  gap: 30px;
   align-items: start;
 }
 
@@ -274,7 +279,7 @@ button:hover,
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
-  margin: 22px 0 0;
+  margin: 18px 0 0;
 }
 
 .kin-emblem {
@@ -288,7 +293,7 @@ button:hover,
   position: relative;
   display: grid;
   place-items: center;
-  width: min(100%, 248px);
+  width: min(100%, 268px);
   aspect-ratio: 1;
   border: 1px solid rgba(159, 89, 51, 0.16);
   border-radius: 40px;
@@ -401,15 +406,20 @@ button:hover,
 .reading-flow {
   position: relative;
   z-index: 1;
-  margin-top: 26px;
+  margin-top: 20px;
+}
+
+.result-copy {
+  margin: 0;
+  color: var(--text);
 }
 
 .result-detail {
-  margin: 10px 0 0;
+  margin: 12px 0 0;
 }
 
 .result-guidance {
-  margin: 16px 0 0;
+  margin: 18px 0 0;
   padding-top: 16px;
   border-top: 1px solid var(--line);
   color: var(--text);
@@ -611,6 +621,10 @@ dd {
 
   .result-header {
     grid-template-columns: 1fr;
+  }
+
+  #result-title {
+    font-size: clamp(3rem, 14vw, 4.6rem);
   }
 
   .kin-visual-panel {

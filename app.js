@@ -45,10 +45,10 @@ const COLOR_MEANINGS = {
 };
 
 const COLOR_INTEGRATIONS = {
-  Rojo: "abre una puerta de inicio, cuerpo y movimiento. Puede ayudarte a reconocer donde la vida pide impulso, raiz y confianza para comenzar de nuevo.",
-  Blanco: "trae una energia de claridad, comunicacion y refinamiento. Puede invitarte a soltar ruido interno para escuchar con mas honestidad lo que quiere ordenarse.",
-  Azul: "activa procesos de transformacion, movimiento interno y creatividad. Puede mostrarte que el cambio no siempre llega para romper, sino para despertar una forma mas viva de estar presente.",
-  Amarillo: "madura la experiencia y la lleva hacia expresion, fruto y conciencia compartida. Puede recordarte que lo vivido tambien puede convertirse en sabiduria disponible para otros.",
+  Rojo: "trae impulso vital, raiz y confianza para comenzar de nuevo desde el cuerpo y el presente.",
+  Blanco: "trae claridad, comunicacion y refinamiento para escuchar con mas honestidad lo que quiere ordenarse.",
+  Azul: "activa transformacion, movimiento interno y creatividad para despertar una forma mas viva de estar presente.",
+  Amarillo: "lleva la experiencia hacia expresion, fruto y conciencia compartida, para que lo vivido tambien pueda volverse sabiduria.",
 };
 
 const TONE_INFINITIVES = {
@@ -538,17 +538,14 @@ function buildReading(seal, tone) {
   const toneDisplay = getToneDisplayName(tone, seal);
   const actionExpression = TONE_ACTION_EXPRESSIONS[tone.name] || TONE_INFINITIVES[tone.action] || tone.action.toLowerCase();
 
-  return `Tu firma ${seal.nameEs} ${toneDisplay} ${getColorDisplayName(seal)} trae una medicina vinculada a ${seal.lifeAction}. El sello muestra el territorio interno de ${seal.essence.toLowerCase()}, mientras el tono ${tone.name} le da un pulso para ${actionExpression}. Esta lectura no busca encerrarte en una definicion: abre una forma de observar como tu energia se mueve en decisiones, vinculos y procesos de cambio.`;
+  return `Tu firma ${seal.nameEs} ${toneDisplay} ${getColorDisplayName(seal)} une la medicina de ${seal.lifeAction} con un pulso para ${actionExpression}. El sello muestra un territorio sensible de ${seal.essence.toLowerCase()} y el tono le da ritmo, direccion y aprendizaje. Esta lectura no te define: te ofrece una forma amorosa de observar como te mueves en decisiones, vinculos y procesos de cambio.`;
 }
 
 function buildSummary(displayName, seal, tone) {
   const toneDisplay = getToneDisplayName(tone, seal);
+  const prefix = displayName === "Tu firma" ? "Tu firma galactica" : `${displayName}, tu firma galactica`;
 
-  if (displayName === "Tu firma") {
-    return `Tu firma galactica reune el sello ${seal.nameEs} con el tono ${toneDisplay}. Es una primera puerta para mirar tu energia con mas suavidad, reconocer tus ritmos y escuchar que aprendizaje quiere hacerse visible en este momento.`;
-  }
-
-  return `${displayName}, tu firma galactica reune el sello ${seal.nameEs} con el tono ${toneDisplay}. Es una primera puerta para mirar tu energia con mas suavidad, reconocer tus ritmos y escuchar que aprendizaje quiere hacerse visible en este momento.`;
+  return `${prefix} reune ${seal.nameEs} y el tono ${toneDisplay}. Una puerta simple para mirar tu energia con mas suavidad y reconocer que aprendizaje quiere hacerse visible ahora.`;
 }
 
 function buildGuidance(seal, tone) {
@@ -589,8 +586,10 @@ function renderResult(displayName, kinNumber, tone, seal) {
   resultSeal.textContent = seal.nameEs;
   resultColor.textContent = seal.color;
   resultCopy.textContent = buildReading(seal, tone);
-  resultSealMeta.textContent = `El sello ${seal.nameEs} sostiene el poder de ${seal.power.toLowerCase()}, la accion de ${seal.lifeAction} y la esencia de ${seal.essence.toLowerCase()}. No habla de una obligacion, sino de una cualidad disponible: ${seal.phrase}. Cuando esta energia se escucha con presencia, puede volverse una medicina concreta para tu vida cotidiana.`;
-  resultToneMeta.textContent = `El tono ${tone.name} trae ${TONE_PULSES[tone.name] || "un pulso singular"}. Su funcion es ${tone.function.toLowerCase()}, su accion se expresa como ${tone.action.toLowerCase()} y su esencia es ${tone.essence.toLowerCase()}. ${capitalize(tone.phrase)}; por eso puede mostrarte como dar ritmo, direccion o integracion a la fuerza de tu sello.`;
+  const toneFunction = TONE_INFINITIVES[tone.function] || tone.function.toLowerCase();
+  const toneAction = TONE_INFINITIVES[tone.action] || tone.action.toLowerCase();
+  resultSealMeta.textContent = `El sello ${seal.nameEs} trabaja con el poder de ${seal.power.toLowerCase()} y la esencia de ${seal.essence.toLowerCase()}. Su movimiento natural invita a ${seal.lifeAction}; en esta frecuencia, ${seal.phrase}. Mas que una obligacion, senala una cualidad disponible para escuchar y llevar a la vida cotidiana.`;
+  resultToneMeta.textContent = `El tono ${tone.name} trae ${TONE_PULSES[tone.name] || "un pulso singular"}. Su funcion es ${toneFunction}, su accion es ${toneAction} y su esencia es ${tone.essence.toLowerCase()}. ${capitalize(tone.phrase)}, ayudando a darle ritmo e integracion a la fuerza del sello.`;
   resultColorMeta.textContent = `En la secuencia de colores, el ${seal.color.toLowerCase()} ${COLOR_MEANINGS[seal.color]}. En esta firma, ${COLOR_INTEGRATIONS[seal.color] || "esta capa aporta una cualidad particular al modo en que tu energia se expresa."}`;
   resultGuidance.textContent = buildGuidance(seal, tone);
   waveTitle.textContent = `Onda encantada de ${wave.waveSeal.nameEs}`;
