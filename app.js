@@ -44,6 +44,13 @@ const COLOR_MEANINGS = {
   Amarillo: "madura y comparte fruto",
 };
 
+const COLOR_INTEGRATIONS = {
+  Rojo: "abre una puerta de inicio, cuerpo y movimiento. Puede ayudarte a reconocer donde la vida pide impulso, raiz y confianza para comenzar de nuevo.",
+  Blanco: "trae una energia de claridad, comunicacion y refinamiento. Puede invitarte a soltar ruido interno para escuchar con mas honestidad lo que quiere ordenarse.",
+  Azul: "activa procesos de transformacion, movimiento interno y creatividad. Puede mostrarte que el cambio no siempre llega para romper, sino para despertar una forma mas viva de estar presente.",
+  Amarillo: "madura la experiencia y la lleva hacia expresion, fruto y conciencia compartida. Puede recordarte que lo vivido tambien puede convertirse en sabiduria disponible para otros.",
+};
+
 const TONE_INFINITIVES = {
   Unifica: "unificar",
   Atrae: "atraer",
@@ -529,28 +536,31 @@ function updateShopLink(seal) {
 
 function buildReading(seal, tone) {
   const toneDisplay = getToneDisplayName(tone, seal);
+  const actionExpression = TONE_ACTION_EXPRESSIONS[tone.name] || TONE_INFINITIVES[tone.action] || tone.action.toLowerCase();
 
-  return `Tu firma ${seal.nameEs} ${toneDisplay} ${getColorDisplayName(seal)} abre una frecuencia que puede acercarte a ${seal.lifeAction} desde una escucha mas consciente de ${seal.essence.toLowerCase()}. En vez de definirte de forma rigida, esta energia puede ayudarte a reconocer la medicina de ${seal.power.toLowerCase()} que busca expresarse en tu camino.`;
+  return `Tu firma ${seal.nameEs} ${toneDisplay} ${getColorDisplayName(seal)} trae una medicina vinculada a ${seal.lifeAction}. El sello muestra el territorio interno de ${seal.essence.toLowerCase()}, mientras el tono ${tone.name} le da un pulso para ${actionExpression}. Esta lectura no busca encerrarte en una definicion: abre una forma de observar como tu energia se mueve en decisiones, vinculos y procesos de cambio.`;
 }
 
 function buildSummary(displayName, seal, tone) {
+  const toneDisplay = getToneDisplayName(tone, seal);
+
   if (displayName === "Tu firma") {
-    return `Esta firma galactica une el sello ${seal.nameEs} con el tono ${tone.name} y abre una primera clave para comprender la frecuencia que acompana tu camino.`;
+    return `Tu firma galactica reune el sello ${seal.nameEs} con el tono ${toneDisplay}. Es una primera puerta para mirar tu energia con mas suavidad, reconocer tus ritmos y escuchar que aprendizaje quiere hacerse visible en este momento.`;
   }
 
-  return `${displayName}, tu firma galactica une el sello ${seal.nameEs} con el tono ${tone.name} y abre una primera clave para comprender la frecuencia que acompana tu camino.`;
+  return `${displayName}, tu firma galactica reune el sello ${seal.nameEs} con el tono ${toneDisplay}. Es una primera puerta para mirar tu energia con mas suavidad, reconocer tus ritmos y escuchar que aprendizaje quiere hacerse visible en este momento.`;
 }
 
 function buildGuidance(seal, tone) {
-  return `En la vida cotidiana, esta combinacion puede mostrarte como atraviesas tus vinculos, tus decisiones y tu ritmo interno. Tu kin no te encierra: puede servirte como una guia suave para escucharte mejor y elegir con mas presencia aquello que hoy quiere abrirse en ti.`;
+  return `Para integrar esta lectura, observa donde tu cuerpo pide mas presencia, donde tus decisiones piden calma y donde tus vinculos pueden abrir una nueva comprension. Tu kin puede acompanarte como una brujula simbolica: no marca un destino fijo, pero si puede ayudarte a volver a ti con mas conciencia, ternura y claridad practica.`;
 }
 
 function buildWaveCopy(waveSeal) {
-  return `Tu Onda Encantada nace en ${waveSeal.nameEs} y habla del recorrido mas amplio que sostiene tu aprendizaje. Esta secuencia muestra de que manera tu energia madura paso a paso y cual es el gran clima evolutivo que acompana tu proceso.`;
+  return `Tu Onda Encantada nace en ${waveSeal.nameEs} y habla del clima evolutivo que sostiene tu aprendizaje. Esta secuencia muestra el recorrido por el que tu energia madura: aquello que inicia, lo que se ordena en el camino y la forma en que la experiencia puede convertirse en conciencia.`;
 }
 
 function buildOracleCopy(oracle) {
-  return `Tu oraculo dibuja una trama viva de compania y aprendizaje. ${oracle.guide.seal.nameEs} puede mostrar el tono de tu guia, ${oracle.analog.seal.nameEs} aquello que fluye con mayor afinidad, ${oracle.antipode.seal.nameEs} el desafio que impulsa crecimiento y ${oracle.occult.seal.nameEs} la medicina silenciosa que se revela con el tiempo.`;
+  return `Tu oraculo no aparece como una lista aislada, sino como una trama de apoyo y aprendizaje. ${oracle.guide.seal.nameEs} puede orientar tu mirada, ${oracle.analog.seal.nameEs} muestra una afinidad que acompana, ${oracle.antipode.seal.nameEs} revela el punto que moviliza crecimiento y ${oracle.occult.seal.nameEs} guarda una medicina mas silenciosa, esa que suele revelarse cuando el proceso madura.`;
 }
 
 function updateSessionLinks(seal, tone, kinNumber) {
@@ -579,9 +589,9 @@ function renderResult(displayName, kinNumber, tone, seal) {
   resultSeal.textContent = seal.nameEs;
   resultColor.textContent = seal.color;
   resultCopy.textContent = buildReading(seal, tone);
-  resultSealMeta.textContent = `El sello de ${seal.nameEs} trae el poder de ${seal.power.toLowerCase()}, la accion de ${seal.lifeAction} y la esencia de ${seal.essence.toLowerCase()}. En su frecuencia, ${seal.phrase}, dejando ver una cualidad profunda de tu energia natal.`;
-  resultToneMeta.textContent = `El tono ${tone.name} le da a esta energia ${TONE_PULSES[tone.name] || "un pulso singular"}. Puede expresar la capacidad de ${TONE_ACTION_EXPRESSIONS[tone.name] || (TONE_INFINITIVES[tone.action] || tone.action.toLowerCase())}. ${capitalize(tone.phrase)} y muestra como esta fuerza busca encarnarse en tu vida.`;
-  resultColorMeta.textContent = `En la secuencia de colores, el ${seal.color.toLowerCase()} ${COLOR_MEANINGS[seal.color]}. Esta capa puede sentirse como una invitacion al movimiento, a la apertura y al modo en que tu energia entra en proceso.`;
+  resultSealMeta.textContent = `El sello ${seal.nameEs} sostiene el poder de ${seal.power.toLowerCase()}, la accion de ${seal.lifeAction} y la esencia de ${seal.essence.toLowerCase()}. No habla de una obligacion, sino de una cualidad disponible: ${seal.phrase}. Cuando esta energia se escucha con presencia, puede volverse una medicina concreta para tu vida cotidiana.`;
+  resultToneMeta.textContent = `El tono ${tone.name} trae ${TONE_PULSES[tone.name] || "un pulso singular"}. Su funcion es ${tone.function.toLowerCase()}, su accion se expresa como ${tone.action.toLowerCase()} y su esencia es ${tone.essence.toLowerCase()}. ${capitalize(tone.phrase)}; por eso puede mostrarte como dar ritmo, direccion o integracion a la fuerza de tu sello.`;
+  resultColorMeta.textContent = `En la secuencia de colores, el ${seal.color.toLowerCase()} ${COLOR_MEANINGS[seal.color]}. En esta firma, ${COLOR_INTEGRATIONS[seal.color] || "esta capa aporta una cualidad particular al modo en que tu energia se expresa."}`;
   resultGuidance.textContent = buildGuidance(seal, tone);
   waveTitle.textContent = `Onda encantada de ${wave.waveSeal.nameEs}`;
   waveCopy.textContent = `${buildWaveCopy(wave.waveSeal)} Comienza en el Kin ${wave.waveStartKin}, que marca el punto de partida de esta secuencia.`;
