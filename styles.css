@@ -29,7 +29,7 @@ body {
 }
 
 .page {
-  width: min(1080px, calc(100% - 32px));
+  width: min(1320px, calc(100% - 32px));
   margin: 0 auto;
   padding: 56px 0 80px;
 }
@@ -97,7 +97,7 @@ h2 {
 }
 
 #result-title {
-  font-size: clamp(3.1rem, 5.2vw, 4.7rem);
+  font-size: clamp(3.1rem, 4.4vw, 4.9rem);
 }
 
 .intro,
@@ -140,7 +140,7 @@ ol {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(360px, 0.86fr) minmax(620px, 1.24fr);
   align-items: start;
   gap: 24px;
   margin-bottom: 24px;
@@ -255,8 +255,8 @@ button:hover,
 
 .result-header {
   display: grid;
-  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
-  gap: 30px;
+  grid-template-columns: minmax(230px, 300px) minmax(320px, 1fr);
+  gap: 28px;
   align-items: start;
 }
 
@@ -264,6 +264,7 @@ button:hover,
 .kin-content-panel {
   position: relative;
   z-index: 1;
+  min-width: 0;
 }
 
 .panel-label {
@@ -588,6 +589,16 @@ dd {
   margin: 0;
   color: var(--muted);
   line-height: 1.62;
+}
+
+@media (max-width: 1120px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .result-header {
+    grid-template-columns: minmax(240px, 320px) minmax(360px, 1fr);
+  }
 }
 
 @media (max-width: 820px) {
