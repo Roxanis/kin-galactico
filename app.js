@@ -150,13 +150,12 @@ const YEAR_TABLE_BASE_VALUE = 42;
 const YEAR_TABLE_STEP = 105;
 
 const APP_CONFIG = window.KIN_APP_CONFIG || {};
-const SHOP_BASE_URL = (APP_CONFIG.shopBaseUrl || "").replace(/\/$/, "");
-const SHOP_COLLECTIONS = APP_CONFIG.collections || {};
-const DEFAULT_SHOP_URL = APP_CONFIG.defaultShopUrl || "https://www.rox-experiences.com/productos/";
+const SERVICES_PAGE_URL =
+  APP_CONFIG.servicesPageUrl || "https://www.rox-experiences.com/terapias-holisticas/";
 const SESSION_PAGE_URL =
   APP_CONFIG.sessionPageUrl || "https://www.rox-experiences.com/astrologia-maya-tzolkin/";
 const SESSION_BOOKING_URL =
-  APP_CONFIG.sessionBookingUrl || "https://wa.me/541169047724";
+  APP_CONFIG.sessionBookingUrl || "https://wa.me/5491169047724";
 const KIN_IMAGE_BASE_PATH = APP_CONFIG.kinImageBasePath || "";
 const SEAL_IMAGE_BASE_PATH = APP_CONFIG.sealImageBasePath || "./assets/seals";
 const SEAL_IMAGES = APP_CONFIG.sealImages || {};
@@ -188,7 +187,7 @@ const oracleDestiny = document.querySelector("#oracle-destiny");
 const oracleAntipode = document.querySelector("#oracle-antipode");
 const oracleOccult = document.querySelector("#oracle-occult");
 const oracleCopy = document.querySelector("#oracle-copy");
-const shopLink = document.querySelector("#shop-link");
+const servicesLink = document.querySelector("#services-link");
 const sessionLink = document.querySelector("#session-link");
 const sessionInfoLink = document.querySelector("#session-info-link");
 
@@ -313,20 +312,6 @@ function calculateKin(dateString) {
   const seal = SOLAR_SEALS[positiveModulo(kinNumber - 1, 20)];
 
   return { kinNumber, tone, seal };
-}
-
-function resolveShopUrl(seal) {
-  const collectionPath = SHOP_COLLECTIONS[seal.name];
-
-  if (collectionPath && SHOP_BASE_URL) {
-    return `${SHOP_BASE_URL}${collectionPath.startsWith("/") ? "" : "/"}${collectionPath}`;
-  }
-
-  if (collectionPath) {
-    return collectionPath;
-  }
-
-  return DEFAULT_SHOP_URL;
 }
 
 function resolveKinImage(kinNumber, seal) {
@@ -523,15 +508,9 @@ function updateKinImage(kinNumber, seal, toneDisplay) {
   kinImage.hidden = true;
 }
 
-function updateShopLink(seal) {
-  const url = resolveShopUrl(seal);
-  const isConfigured = Boolean(SHOP_COLLECTIONS[seal.name]);
-
-  shopLink.href = url;
-  shopLink.textContent = isConfigured
-    ? `Seguir explorando la medicina de ${seal.nameEs}`
-    : "Explorar productos y rituales";
-  shopLink.classList.toggle("is-placeholder", !isConfigured);
+function updateServicesLink() {
+  servicesLink.href = SERVICES_PAGE_URL;
+  servicesLink.textContent = "Explorar terapias holísticas";
 }
 
 function buildReading(seal, tone) {
@@ -600,7 +579,7 @@ function renderResult(displayName, kinNumber, tone, seal) {
   oracleAntipode.textContent = `Kin ${oracle.antipode.kinNumber}: ${oracle.antipode.seal.nameEs}`;
   oracleOccult.textContent = `Kin ${oracle.occult.kinNumber}: ${oracle.occult.seal.nameEs}`;
   oracleCopy.textContent = buildOracleCopy(oracle);
-  updateShopLink(seal);
+  updateServicesLink();
   updateSessionLinks(seal, tone, kinNumber);
 
   resultCard.hidden = false;

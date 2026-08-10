@@ -135,7 +135,7 @@ ol,
 label,
 input,
 button,
-.shop-link {
+.primary-link {
   font-size: 1rem;
   line-height: 1.65;
 }
@@ -224,7 +224,7 @@ input {
 }
 
 button,
-.shop-link {
+.primary-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -243,12 +243,12 @@ button,
 }
 
 button:hover,
-.shop-link:hover {
+.primary-link:hover {
   transform: translateY(-1px);
   opacity: 0.96;
 }
 
-.shop-link.is-placeholder {
+.primary-link.is-placeholder {
   background: linear-gradient(120deg, var(--accent-2), #9aa28d);
 }
 
