@@ -151,9 +151,9 @@ const YEAR_TABLE_STEP = 105;
 
 const APP_CONFIG = window.KIN_APP_CONFIG || {};
 const SERVICES_PAGE_URL =
-  APP_CONFIG.servicesPageUrl || "https://www.rox-experiences.com/terapias-holisticas/";
+  APP_CONFIG.servicesPageUrl || "https://rox-experiences.com/";
 const SESSION_PAGE_URL =
-  APP_CONFIG.sessionPageUrl || "https://www.rox-experiences.com/astrologia-maya-tzolkin/";
+  APP_CONFIG.sessionPageUrl || "https://rox-experiences.com/";
 const SESSION_BOOKING_URL =
   APP_CONFIG.sessionBookingUrl || "https://wa.me/5491169047724";
 const KIN_IMAGE_BASE_PATH = APP_CONFIG.kinImageBasePath || "";
@@ -509,8 +509,12 @@ function updateKinImage(kinNumber, seal, toneDisplay) {
 }
 
 function updateServicesLink() {
-  servicesLink.href = SERVICES_PAGE_URL;
-  servicesLink.textContent = "Explorar terapias holísticas";
+  const message = encodeURIComponent(
+    "Hola Rox, hice la calculadora de Kin Maya y quiero que me ayudes a elegir una sesión."
+  );
+
+  servicesLink.href = `${SESSION_BOOKING_URL}?text=${message}`;
+  servicesLink.textContent = "Escribirme para elegir una sesión";
 }
 
 function buildReading(seal, tone) {

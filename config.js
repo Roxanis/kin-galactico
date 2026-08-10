@@ -1,7 +1,7 @@
 window.KIN_APP_CONFIG = {
-  siteBaseUrl: "https://www.rox-experiences.com",
-  servicesPageUrl: "https://www.rox-experiences.com/terapias-holisticas/",
-  sessionPageUrl: "https://www.rox-experiences.com/astrologia-maya-tzolkin/",
+  siteBaseUrl: "https://rox-experiences.com/",
+  servicesPageUrl: "https://rox-experiences.com/",
+  sessionPageUrl: "https://rox-experiences.com/",
   sessionBookingUrl: "https://wa.me/5491169047724",
   kinImageBasePath: "",
   sealImageBasePath: "./assets/seals",
